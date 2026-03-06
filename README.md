@@ -17,6 +17,6 @@ This repository serves as an immutable showcase of DoD-grade ETL orchestration m
 
 
 ## Technical Pedigree
-* MIP (Military Investment Program): Consolidated large-scale financial data within **Impact Level 4/5 AWS Enclaves**.
-* BDE (Beneficiary Data Exchange): Lead Architect for VA/DoD interoperability, syncing **Millennium (Cerner)** EHR feeds.
+* MIP (Military Investment Program): Consolidated large-scale financial data within Impact Level 4/5 AWS Enclaves.
+* BDE (Beneficiary Data Exchange): Lead Architect for VA/DoD interoperability, syncing Millennium (Cerner) EHR feeds.
 * Survey Portal: Engineered secure ingestion frameworks for mission-critical telemetry.
