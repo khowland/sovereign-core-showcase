@@ -13,10 +13,3 @@ This repository serves as an immutable showcase of DoD-grade ETL orchestration m
 * [T] Transformer: The ETL engine-bridging legacy DoD systems with real-time inference.
 * [Ac] Actuator: Agentic I/O and CI/CD deployment orchestration.
 * [η] Resonance: Alignment of technical telemetry with mission-critical outcomes.
-
-
-
-## Technical Pedigree
-* MIP (Military Investment Program): Consolidated large-scale financial data within Impact Level 4/5 AWS Enclaves.
-* BDE (Beneficiary Data Exchange): Lead Architect for VA/DoD interoperability, syncing Millennium (Cerner) EHR feeds.
-* Survey Portal: Engineered secure ingestion frameworks for mission-critical telemetry.
