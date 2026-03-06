@@ -45,67 +45,58 @@ const ResonanceMonitor: React.FC = () => {
     }, []);
 
     return (
-        <div style={styles.container}>
-            <header style={styles.header}>
-                <div style={styles.branding}>SOVEREIGN-CORE v1.0.0 // K. HOWLAND</div>
-                <div style={styles.statusLine}>[Lo] INVARIANT LOCK: ACTIVE // SYSTEM NODE: 0xDEADBEEF</div>
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 text-slate-200 font-mono p-4 rounded-2xl flex flex-col h-full overflow-hidden shadow-2xl relative">
+            <header className="flex justify-between border-b border-white/10 pb-2 mb-4 text-xs font-bold text-cyan-400 uppercase tracking-widest">
+                <div>SOVEREIGN-CORE v1.0.0 // K. HOWLAND</div>
+                <div className="opacity-60">[Lo] INVARIANT LOCK: ACTIVE</div>
             </header>
 
-            <main style={styles.dashboard}>
+            <main className="flex-1 flex flex-col gap-6">
                 {/* Vector Alignment Pulsing Bar */}
-                <section style={styles.alignmentSection}>
-                    <div style={styles.sectionHeader}>VECTOR ALIGNMENT STATUS</div>
-                    <div style={styles.pulseContainer}>
-                        <div style={{ ...styles.pulseBar, width: `${alignment}%` }} />
+                <section className="p-3 bg-white/5 border border-white/10 rounded-xl">
+                    <div className="text-[10px] tracking-[0.2em] mb-2 border-l-2 border-cyan-400 pl-2 text-cyan-400 uppercase">Vector Alignment Status</div>
+                    <div className="h-4 bg-slate-900/50 border border-white/10 rounded-full overflow-hidden relative">
+                        <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${alignment}%` }}
+                            className="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                        />
                     </div>
-                    <div style={styles.alignmentValue}>{alignment}% RESONANCE</div>
+                    <div className="text-right text-[10px] mt-1 text-cyan-400/80">{alignment}% RESONANCE</div>
                 </section>
 
-                <section style={styles.vectorGrid}>
+                <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                     {Object.entries(vectors).map(([key, vector]: [string, VectorState]) => (
-                        <div key={key} style={styles.vectorCard}>
-                            <div style={styles.vectorHeader}>
-                                <span style={styles.vectorKey}>[{key}]</span>
-                                <span style={styles.vectorLabel}>{vector.label.toUpperCase()}</span>
+                        <div key={key} className="border border-white/10 p-3 bg-white/5 rounded-lg flex flex-col gap-1 transition-all hover:bg-white/10 group">
+                            <div className="flex gap-2 text-[10px] font-bold">
+                                <span className="text-cyan-400">[{key}]</span>
+                                <span className="opacity-60 group-hover:opacity-100 transition-opacity uppercase">{vector.label}</span>
                             </div>
-                            <div style={styles.vectorData}>
-                                <span style={styles.vectorValue}>{vector.value}</span>
-                                <span style={styles.vectorUnit}>{vector.unit}</span>
+                            <div className="text-lg font-bold text-white flex items-end gap-1">
+                                {vector.value}
+                                <span className="text-[8px] opacity-40 mb-1">{vector.unit}</span>
                             </div>
-                            <div style={styles.vectorFooter}>
-                                STATUS: {vector.status} // COHERENCE: {(alignment * 0.99).toFixed(1)}%
+                            <div className="text-[8px] border-t border-white/5 pt-1 mt-1 opacity-40 uppercase tracking-tighter">
+                                {vector.status} // {(alignment * 0.99).toFixed(1)}%
                             </div>
                         </div>
                     ))}
                 </section>
 
-                <section style={styles.telemetryWall}>
-                    <div style={styles.sectionHeader}>REAL-TIME TELEMETRY STREAM</div>
-                    <div style={styles.telemetryStream}>
+                <section className="flex-1 border border-white/10 p-4 bg-white/5 rounded-xl overflow-hidden relative">
+                    <div className="text-[10px] tracking-[0.2em] mb-2 border-l-2 border-cyan-400 pl-2 text-cyan-400 uppercase">Real-Time Telemetry Stream</div>
+                    <div className="text-[10px] leading-relaxed opacity-60 font-mono whitespace-pre-wrap">
                         {`> [St] COHERENCE DETECTED: 0.9998... OK\n> [Lo] ENFORCING BOUNDARY: VOID-PTR-GDR... ACTIVE\n> [T] IDEMPOTENT TRANSFORM COMPLETE: MAPPING -> ACT_LOGIC\n> [Ac] ZERO-TRUST HANDSHAKE: K.HOWLAND (TRUSTED)\n> [η] SYSTEM DRIFT: 0.00012ms... WITHIN TOLERANCE`}
                     </div>
                 </section>
             </main>
 
-            <footer style={styles.footer}>
-                <div style={styles.ticker}>
-                    &gt;&gt; MONITORING VECTOR SYNC... [St] OK // [Lo] OK // [T] OK // [Ac] OK // [η] OK // SCANNING FOR ENTROPY DRIFT... NONE DETECTED //
+            <footer className="border-t border-white/10 pt-3 mt-4 flex justify-between text-[10px] uppercase font-mono tracking-tighter opacity-40">
+                <div className="flex-1 overflow-hidden whitespace-nowrap">
+                    &gt;&gt; MONITORING VECTOR SYNC... [St] OK // [Lo] OK // [T] OK // [Ac] OK // [η] OK // SCANNING...
                 </div>
-                <div style={styles.timestamp}>NODE_TIME: {new Date().toISOString()}</div>
+                <div className="ml-4 tabular-nums">{new Date().toLocaleTimeString()}</div>
             </footer>
-
-            {/* CSS for Pulse Animation */}
-            <style>{`
-        @keyframes pulse {
-          0% { opacity: 1; box-shadow: 0 0 5px #00FF00; }
-          50% { opacity: 0.7; box-shadow: 0 0 20px #00FF00; }
-          100% { opacity: 1; box-shadow: 0 0 5px #00FF00; }
-        }
-        @keyframes ticker {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
-        }
-      `}</style>
         </div>
     );
 };

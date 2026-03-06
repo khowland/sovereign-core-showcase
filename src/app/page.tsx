@@ -8,7 +8,7 @@ import { ShieldCheck, Zap, BarChart3, Globe } from 'lucide-react';
 
 const MissionReadinessDashboard = () => {
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-emerald-500/30 overflow-hidden">
+        <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 overflow-hidden">
             {/* Ambient Background Elements */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-1/4 -left-12 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full" />
@@ -50,7 +50,7 @@ const MissionReadinessDashboard = () => {
                                 transition={{ delay: 0.3 }}
                                 className="text-4xl md:text-6xl font-bold leading-tight"
                             >
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-slate-300 to-slate-500 uppercase tracking-tighter">
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-slate-400 uppercase tracking-tighter">
                                     SOVEREIGN-CORE // <br />
                                     Mission Readiness Dashboard
                                 </span>
@@ -106,7 +106,7 @@ const MissionReadinessDashboard = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7 + (idx * 0.1) }}
-                            className="bg-white/5 border border-white/10 backdrop-blur-lg rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-default"
+                            className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 hover:bg-white/10 transition-colors cursor-default"
                         >
                             <div className="flex items-center gap-4 mb-4">
                                 <div className="p-2 bg-emerald-500/10 rounded-lg">
