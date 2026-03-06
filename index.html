@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,46 +21,145 @@
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
-    * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
-    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    * {
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
     /* Scanline shimmer on hero ring */
-    @keyframes shimmer { 0%,100% { opacity:0.3 } 50% { opacity:1 } }
-    @keyframes pulse-slow { 0%,100% { opacity:0.6 } 50% { opacity:1 } }
-    @keyframes ticker { 0% { transform: translateX(100%) } 100% { transform: translateX(-100%) } }
+    @keyframes shimmer {
 
-    .animate-shimmer  { animation: shimmer 3s ease-in-out infinite; }
-    .animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
-    .animate-ticker { animation: ticker 24s linear infinite; }
+      0%,
+      100% {
+        opacity: 0.3
+      }
 
-    section.view { display: none; }
-    section.view.active { display: block; }
+      50% {
+        opacity: 1
+      }
+    }
+
+    @keyframes pulse-slow {
+
+      0%,
+      100% {
+        opacity: 0.6
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(100%)
+      }
+
+      100% {
+        transform: translateX(-100%)
+      }
+    }
+
+    .animate-shimmer {
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    .animate-pulse-slow {
+      animation: pulse-slow 2s ease-in-out infinite;
+    }
+
+    .animate-ticker {
+      animation: ticker 24s linear infinite;
+    }
+
+    @keyframes badge-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 6px var(--bdg-color), 0 0 0px var(--bdg-color);
+        opacity: 0.85;
+      }
+
+      50% {
+        box-shadow: 0 0 18px var(--bdg-color), 0 0 4px var(--bdg-color);
+        opacity: 1;
+      }
+    }
+
+    .arch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--bdg-color);
+      color: #ffffff;
+      background: var(--bdg-color);
+      animation: badge-glow 2.8s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    .arch-badge .badge-key {
+      font-size: 0.85rem;
+      letter-spacing: 0;
+      opacity: 0.9;
+    }
+
+    section.view {
+      display: none;
+    }
+
+    section.view.active {
+      display: block;
+    }
 
     .glass {
-      background: rgba(2,6,23,0.80);
+      background: rgba(2, 6, 23, 0.80);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 0 50px -12px rgba(34,197,94,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: 0 0 50px -12px rgba(34, 197, 94, 0.3);
     }
+
     .glass-card {
-      background: rgba(2,6,23,0.50);
+      background: rgba(2, 6, 23, 0.50);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .nav-btn { cursor: pointer; transition: all 0.2s ease; }
+
+    .nav-btn {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
     .nav-btn.active-nav {
-      background: rgba(16,185,129,0.15);
+      background: rgba(16, 185, 129, 0.15);
       color: #6ee7b7;
-      border-color: rgba(16,185,129,0.35);
+      border-color: rgba(16, 185, 129, 0.35);
     }
+
     .timeline-line {
-      background: linear-gradient(to bottom, rgba(34,211,238,0.4), rgba(100,116,139,0.2), transparent);
+      background: linear-gradient(to bottom, rgba(34, 211, 238, 0.4), rgba(100, 116, 139, 0.2), transparent);
     }
-    .vector-badge { font-family: 'JetBrains Mono', monospace; }
+
+    .vector-badge {
+      font-family: 'JetBrains Mono', monospace;
+    }
   </style>
 </head>
+
 <body class="bg-slate-950 text-slate-200 min-h-screen antialiased overflow-x-hidden">
 
   <!-- Ambient background -->
@@ -67,7 +167,8 @@
     <div class="absolute top-1/4 -left-32 w-96 h-96 bg-emerald-500/5 rounded-full" style="filter:blur(120px)"></div>
     <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyan-500/5 rounded-full" style="filter:blur(140px)"></div>
     <div class="absolute top-0 left-0 w-full h-full opacity-[0.015]"
-         style="background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:4rem 4rem"></div>
+      style="background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:4rem 4rem">
+    </div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-5 space-y-5">
@@ -79,11 +180,15 @@
         <span class="mono text-xs uppercase tracking-[0.25em] text-emerald-400">SOVEREIGN-CORE // v2.1.0</span>
       </div>
       <div class="flex gap-1.5" id="nav-tabs">
-        <button onclick="toggleView('home')"         id="btn-home"         class="nav-btn active-nav mono text-xs px-4 py-2 rounded-xl border border-transparent text-slate-400 uppercase tracking-widest">[HOME]</button>
-        <button onclick="toggleView('profile')"      id="btn-profile"      class="nav-btn mono text-xs px-4 py-2 rounded-xl border border-transparent text-slate-400 uppercase tracking-widest">[PROFILE]</button>
-        <button onclick="toggleView('architecture')" id="btn-architecture" class="nav-btn mono text-xs px-4 py-2 rounded-xl border border-transparent text-slate-400 uppercase tracking-widest">[ARCHITECTURE]</button>
+        <button onclick="toggleView('home')" id="btn-home"
+          class="nav-btn active-nav mono text-xs px-4 py-2 rounded-xl border border-transparent text-slate-400 uppercase tracking-widest">[HOME]</button>
+        <button onclick="toggleView('profile')" id="btn-profile"
+          class="nav-btn mono text-xs px-4 py-2 rounded-xl border border-transparent text-slate-400 uppercase tracking-widest">[PROFILE]</button>
+        <button onclick="toggleView('architecture')" id="btn-architecture"
+          class="nav-btn mono text-xs px-4 py-2 rounded-xl border border-transparent text-slate-400 uppercase tracking-widest">[ARCHITECTURE]</button>
       </div>
-      <span class="mono text-[10px] text-slate-600 uppercase tracking-widest hidden md:block">OPERATOR: K. HOWLAND // AUTH: L5</span>
+      <span class="mono text-[10px] text-slate-600 uppercase tracking-widest hidden md:block">OPERATOR: K. HOWLAND //
+        AUTH: L5</span>
     </nav>
 
     <!-- ── VIEW: HOME ────────────────────────────────────────────────────────── -->
@@ -91,7 +196,9 @@
 
       <!-- Hero -->
       <div class="glass rounded-2xl p-8 md:p-14 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-shimmer"></div>
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-shimmer">
+        </div>
         <div class="absolute top-6 right-6 flex gap-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span class="w-2 h-2 rounded-full bg-slate-700"></span>
@@ -100,13 +207,15 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mono text-[10px] uppercase tracking-[0.2em] text-emerald-400"
-                 style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mono text-[10px] uppercase tracking-[0.2em] text-emerald-400"
+              style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               Zero-Trust &nbsp;|&nbsp; System Status: Optimal
             </div>
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-none">
-              <span style="background:linear-gradient(135deg,#67e8f9,#e2e8f0,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+              <span
+                style="background:linear-gradient(135deg,#67e8f9,#e2e8f0,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
                 KEVIN<br>HOWLAND
               </span>
             </h1>
@@ -154,16 +263,23 @@
     <!-- ── VIEW: PROFILE ──────────────────────────────────────────────────────── -->
     <section id="view-profile" class="view space-y-5">
       <div class="glass rounded-2xl p-8 md:p-12 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent animate-shimmer"></div>
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent animate-shimmer">
+        </div>
         <div class="space-y-3 mb-10">
-          <span class="mono text-[10px] uppercase tracking-[0.3em] text-cyan-400">Clearance: Level 5 // Distinguished Architect // DoD IA Workforce</span>
+          <span class="mono text-[10px] uppercase tracking-[0.3em] text-cyan-400">Clearance: Level 5 // Distinguished
+            Architect // DoD IA Workforce</span>
           <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight uppercase">
             Architect
-            <span style="background:linear-gradient(90deg,#67e8f9,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"> Profile</span>
+            <span
+              style="background:linear-gradient(90deg,#67e8f9,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+              Profile</span>
           </h1>
           <p class="text-base text-slate-400 max-w-3xl leading-relaxed">
-            <strong class="text-slate-200">20+ years</strong> engineering high-consequence ETL systems across DoD, public safety, and nationwide AI infrastructure.
-            Specialized in <strong class="text-slate-200">BDE/MIP (Battle Division Element / Mission Intelligence Processing)</strong> data pipelines and
+            <strong class="text-slate-200">20+ years</strong> engineering high-consequence ETL systems across DoD,
+            public safety, and nationwide AI infrastructure.
+            Specialized in <strong class="text-slate-200">BDE/MIP (Battle Division Element / Mission Intelligence
+              Processing)</strong> data pipelines and
             zero-trust secure data fabric for mission-critical environments.
           </p>
         </div>
@@ -189,7 +305,8 @@
         </div>
 
         <!-- Timeline -->
-        <h2 class="mono text-xs uppercase tracking-[0.25em] text-slate-500 mb-6 border-b border-white/5 pb-3">Career Timeline // High-Consequence ETL Pedigree</h2>
+        <h2 class="mono text-xs uppercase tracking-[0.25em] text-slate-500 mb-6 border-b border-white/5 pb-3">Career
+          Timeline // High-Consequence ETL Pedigree</h2>
         <div class="relative">
           <div class="absolute left-[7rem] top-0 bottom-0 w-px timeline-line hidden md:block"></div>
           <div class="space-y-0" id="timeline-items"></div>
@@ -200,10 +317,13 @@
     <!-- ── VIEW: ARCHITECTURE ─────────────────────────────────────────────────── -->
     <section id="view-architecture" class="view space-y-4">
       <div class="glass rounded-2xl p-8 md:p-10">
-        <span class="mono text-[10px] uppercase tracking-[0.3em] text-emerald-400">System Architecture // Five-Vector Schema</span>
+        <span class="mono text-[10px] uppercase tracking-[0.3em] text-emerald-400">System Architecture // Five-Vector
+          Schema</span>
         <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight uppercase mt-2">
           FIVE-VECTOR
-          <span style="background:linear-gradient(90deg,#34d399,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"> SCHEMA</span>
+          <span
+            style="background:linear-gradient(90deg,#34d399,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+            SCHEMA</span>
         </h1>
         <p class="text-slate-400 font-light mt-3 max-w-3xl">
           The immutable DNA of the operational mesh. Every subsystem, transaction, and state
@@ -217,8 +337,10 @@
     <footer class="overflow-hidden border-t border-white/5 py-3">
       <div class="mono text-[10px] text-slate-600 uppercase tracking-widest animate-ticker whitespace-nowrap">
         © 2026 SOVEREIGN-CORE &nbsp;//&nbsp; ZERO-TRUST PROTOCOL ACTIVE &nbsp;//&nbsp; K. HOWLAND &nbsp;//&nbsp;
-        [St] STATE: STABLE &nbsp;//&nbsp; [Lo] INVARIANTS: LOCKED &nbsp;//&nbsp; [T] TRANSFORM: IDEMPOTENT &nbsp;//&nbsp;
-        [Ac] ACCESS: GATED &nbsp;//&nbsp; [η] RESONANCE: 98.42% &nbsp;//&nbsp; NATIONWIDE DEPLOYMENT SECURED &nbsp;//&nbsp;
+        [St] STATE: STABLE &nbsp;//&nbsp; [Lo] INVARIANTS: LOCKED &nbsp;//&nbsp; [T] TRANSFORM: IDEMPOTENT
+        &nbsp;//&nbsp;
+        [Ac] ACCESS: GATED &nbsp;//&nbsp; [η] RESONANCE: 98.42% &nbsp;//&nbsp; NATIONWIDE DEPLOYMENT SECURED
+        &nbsp;//&nbsp;
         BDE/MIP PIPELINE: OPERATIONAL &nbsp;//&nbsp; DOD ETL PEDIGREE: 20+ YEARS &nbsp;//&nbsp;
       </div>
     </footer>
@@ -241,40 +363,50 @@
 
     // ── DATA ───────────────────────────────────────────────────────────────────
     const vectors = [
-      { key: 'St', label: 'State Space',       color: '#60a5fa', def: 'Multidimensional representation of persistent and ephemeral data nodes.' },
+      { key: 'St', label: 'State Space', color: '#60a5fa', def: 'Multidimensional representation of persistent and ephemeral data nodes.' },
       { key: 'Lo', label: 'Invariant Control', color: '#22d3ee', def: 'Logic layer governing state transitions through absolute policy constraints.' },
-      { key: 'T',  label: 'Transformer',       color: '#c084fc', def: 'Engine for data metamorphosis and agentic inference with idempotent validation.' },
-      { key: 'Ac', label: 'Actuator',          color: '#fb923c', def: 'Zero-trust orchestration layer defining gated I/O and execution telemetry.' },
-      { key: 'η',  label: 'Resonance',         color: '#4ade80', def: 'High-fidelity telemetry and alignment monitoring for real-time drift detection.' },
+      { key: 'T', label: 'Transformer', color: '#c084fc', def: 'Engine for data metamorphosis and agentic inference with idempotent validation.' },
+      { key: 'Ac', label: 'Actuator', color: '#fb923c', def: 'Zero-trust orchestration layer defining gated I/O and execution telemetry.' },
+      { key: 'η', label: 'Resonance', color: '#4ade80', def: 'High-fidelity telemetry and alignment monitoring for real-time drift detection.' },
     ];
 
     const timeline = [
-      { years:'2004–2010', role:'Strategic Systems Architecture Lead', org:'DoD Contractor (Classified)', vector:'St', color:'#60a5fa',
-        detail:'Architected high-consequence ETL pipelines for secure logistics and intelligence data. Implemented zero-trust data ingestion for DoD BDE/MIP (Battle Division Element / Mission Intelligence Processing) pipelines — ensuring deterministic integrity across distributed, air-gapped node environments. Processed billions of records under strict AU-12 audit requirements (NIST SP 800-53).' },
-      { years:'2010–2015', role:'Distributed Infrastructure Engineer', org:'State Infrastructure Systems', vector:'Lo', color:'#22d3ee',
-        detail:'Managed large-scale data metamorphosis for public safety and emergency services networks. Designed logic-locked state transition engines with full idempotency guarantees. Built complete audit trails for critical infrastructure deployments serving millions of citizens under zero-downtime SLA constraints.' },
-      { years:'2015–2019', role:'Principal Data Architect', org:'Industrial Automation & Advanced R&D', vector:'T', color:'#c084fc',
-        detail:'Led idempotent ETL framework design for heavy fabrication telemetry and industrial IoT data streams. Built transformer pipeline architectures capable of ingesting real-time sensor feeds and mapping them to actionable inference models — bridging operational technology (OT) and information technology (IT) domains.' },
-      { years:'2019–2022', role:'Zero-Trust Systems Architect', org:'Distributed Intelligence Advisory', vector:'Ac', color:'#fb923c',
-        detail:'Designed gated I/O orchestration layers for multi-tenant analytics and intelligence platforms. Defined infrastructure-as-identity patterns and cryptographically enforced access control aligned with DoD 8570.01-M IA Workforce requirements. Led adoption of FedRAMP-compliant containerized workloads across distributed cloud environments.' },
-      { years:'2022–Present', role:'Principal Automation Architect', org:'Dagwood Sovereign Mesh', vector:'η', color:'#4ade80',
-        detail:'Leading agentic inference research and sovereign mesh networking for nationwide AI deployment. Architecting the Dagwood Sovereign Mesh — a zero-trust intelligence fabric with real-time resonance monitoring and alignment drift detection. BDE/MIP ETL expertise applied to sovereign AI orchestration across distributed, multi-node environments.' },
+      {
+        years: '2004–2010', role: 'Strategic Systems Architecture Lead', org: 'DoD Contractor (Classified)', vector: 'St', color: '#60a5fa',
+        detail: 'Architected high-consequence ETL pipelines for secure logistics and intelligence data. Implemented zero-trust data ingestion for DoD BDE/MIP (Battle Division Element / Mission Intelligence Processing) pipelines — ensuring deterministic integrity across distributed, air-gapped node environments. Processed billions of records under strict AU-12 audit requirements (NIST SP 800-53).'
+      },
+      {
+        years: '2010–2015', role: 'Distributed Infrastructure Engineer', org: 'State Infrastructure Systems', vector: 'Lo', color: '#22d3ee',
+        detail: 'Managed large-scale data metamorphosis for public safety and emergency services networks. Designed logic-locked state transition engines with full idempotency guarantees. Built complete audit trails for critical infrastructure deployments serving millions of citizens under zero-downtime SLA constraints.'
+      },
+      {
+        years: '2015–2019', role: 'Principal Data Architect', org: 'Industrial Automation & Advanced R&D', vector: 'T', color: '#c084fc',
+        detail: 'Led idempotent ETL framework design for heavy fabrication telemetry and industrial IoT data streams. Built transformer pipeline architectures capable of ingesting real-time sensor feeds and mapping them to actionable inference models — bridging operational technology (OT) and information technology (IT) domains.'
+      },
+      {
+        years: '2019–2022', role: 'Zero-Trust Systems Architect', org: 'Distributed Intelligence Advisory', vector: 'Ac', color: '#fb923c',
+        detail: 'Designed gated I/O orchestration layers for multi-tenant analytics and intelligence platforms. Defined infrastructure-as-identity patterns and cryptographically enforced access control aligned with DoD 8570.01-M IA Workforce requirements. Led adoption of FedRAMP-compliant containerized workloads across distributed cloud environments.'
+      },
+      {
+        years: '2022–Present', role: 'Principal Automation Architect', org: 'Dagwood Sovereign Mesh', vector: 'η', color: '#4ade80',
+        detail: 'Leading agentic inference research and sovereign mesh networking for nationwide AI deployment. Architecting the Dagwood Sovereign Mesh — a zero-trust intelligence fabric with real-time resonance monitoring and alignment drift detection. BDE/MIP ETL expertise applied to sovereign AI orchestration across distributed, multi-node environments.'
+      },
     ];
 
     const archLayers = [
-      { v:'St', name:'State Space',       glow:'rgba(96,165,250,0.15)',  ring:'rgba(96,165,250,0.25)',  detail:'Multidimensional representation of all persistent and ephemeral data. State is treated as a first-class citizen, ensuring consistency across distributed nodes. Foundations of BDE/MIP data persistence strategy.' },
-      { v:'Lo', name:'Invariant Control', glow:'rgba(34,211,238,0.15)', ring:'rgba(34,211,238,0.25)', detail:'The logic layer that governs state transitions. No operation may violate fundamental constraints. Invariants are absolute — enforced at the policy layer with zero exceptions.' },
-      { v:'T',  name:'Transformer',       glow:'rgba(192,132,252,0.15)',ring:'rgba(192,132,252,0.25)',detail:'Engine for data metamorphosis and agentic inference. All ETL transformations remain idempotent and auditable. Handles the mapping of raw state into actionable logic — including 20+ years of DoD ingestion patterns.' },
-      { v:'Ac', name:'Actuator',          glow:'rgba(251,146,60,0.15)', ring:'rgba(251,146,60,0.25)', detail:'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions. Granular, cryptographically verified control — aligned with DoD 8570 and FedRAMP.' },
-      { v:'η',  name:'Resonance',         glow:'rgba(74,222,128,0.15)', ring:'rgba(74,222,128,0.25)', detail:'High-fidelity telemetry and alignment monitoring. Detects drift, cross-vector desynchronization, and systemic anomalies in real time — the feedback loop required for zero-trust assurance at nationwide scale.' },
+      { v: 'St', name: 'State Space', glow: 'rgba(96,165,250,0.15)', ring: 'rgba(96,165,250,0.25)', detail: 'Multidimensional representation of all persistent and ephemeral data. State is treated as a first-class citizen, ensuring consistency across distributed nodes. Foundations of BDE/MIP data persistence strategy.' },
+      { v: 'Lo', name: 'Invariant Control', glow: 'rgba(34,211,238,0.15)', ring: 'rgba(34,211,238,0.25)', detail: 'The logic layer that governs state transitions. No operation may violate fundamental constraints. Invariants are absolute — enforced at the policy layer with zero exceptions.' },
+      { v: 'T', name: 'Transformer', glow: 'rgba(192,132,252,0.15)', ring: 'rgba(192,132,252,0.25)', detail: 'Engine for data metamorphosis and agentic inference. All ETL transformations remain idempotent and auditable. Handles the mapping of raw state into actionable logic — including 20+ years of DoD ingestion patterns.' },
+      { v: 'Ac', name: 'Actuator', glow: 'rgba(251,146,60,0.15)', ring: 'rgba(251,146,60,0.25)', detail: 'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions. Granular, cryptographically verified control — aligned with DoD 8570 and FedRAMP.' },
+      { v: 'η', name: 'Resonance', glow: 'rgba(74,222,128,0.15)', ring: 'rgba(74,222,128,0.25)', detail: 'High-fidelity telemetry and alignment monitoring. Detects drift, cross-vector desynchronization, and systemic anomalies in real time — the feedback loop required for zero-trust assurance at nationwide scale.' },
     ];
 
     // ── RENDER: Telemetry bars ─────────────────────────────────────────────────
     function renderTelemetry() {
       const container = document.getElementById('telemetry-bars');
-      const vals = { St:'99.9%', Lo:'100%', T:'99.7%', Ac:'97.8%', η:'98.4%' };
-      const colors = { St:'#60a5fa', Lo:'#22d3ee', T:'#c084fc', Ac:'#fb923c', η:'#4ade80' };
-      const widths = { St:99.9, Lo:100, T:99.7, Ac:97.8, η:98.4 };
+      const vals = { St: '99.9%', Lo: '100%', T: '99.7%', Ac: '97.8%', η: '98.4%' };
+      const colors = { St: '#60a5fa', Lo: '#22d3ee', T: '#c084fc', Ac: '#fb923c', η: '#4ade80' };
+      const widths = { St: 99.9, Lo: 100, T: 99.7, Ac: 97.8, η: 98.4 };
       container.innerHTML = vectors.map(v => `
         <div class="flex items-center gap-3">
           <span class="mono text-[10px] w-5 text-right" style="color:${colors[v.key]}">${v.key}</span>
@@ -322,19 +454,28 @@
     }
 
     // ── RENDER: Architecture layers ────────────────────────────────────────────
+    // Badge solid colors (full opacity, high contrast on dark bg)
+    const badgeColors = { St: 'rgba(59,130,246,0.85)', Lo: 'rgba(6,182,212,0.85)', T: 'rgba(147,51,234,0.80)', Ac: 'rgba(234,88,12,0.85)', η: 'rgba(16,185,129,0.85)' };
+    const archDelays = { St: '0s', Lo: '0.4s', T: '0.8s', Ac: '1.2s', η: '1.6s' };
+
     function renderArchLayers() {
       document.getElementById('arch-layers').innerHTML = archLayers.map(layer => `
         <div class="glass rounded-2xl p-5 md:p-8 relative overflow-hidden group transition-all duration-300 hover:shadow-aegis-intense"
              style="background:linear-gradient(135deg, ${layer.glow} 0%, rgba(2,6,23,0.8) 60%)">
-          <div class="absolute top-4 right-6 mono text-8xl font-black text-white opacity-[0.04] select-none group-hover:opacity-[0.07] transition-opacity">${layer.v}</div>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center relative z-10">
-            <div class="md:col-span-3">
-              <span class="mono text-xs font-bold px-3 py-1.5 rounded-lg"
-                    style="color:${layer.ring};background:${layer.glow};border:1px solid ${layer.ring}">
-                [${layer.v}] &nbsp;${layer.name}
+          <div class="absolute top-4 right-6 mono text-8xl font-black text-white opacity-[0.04] select-none group-hover:opacity-[0.08] transition-opacity">${layer.v}</div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center relative z-10">
+
+            <!-- [Lo] High-contrast animated badge -->
+            <div class="md:col-span-3 flex items-start">
+              <span class="arch-badge"
+                    style="--bdg-color:${badgeColors[layer.v]};animation-delay:${archDelays[layer.v]}">
+                <span class="badge-key">[${layer.v}]</span>
+                ${layer.name}
               </span>
             </div>
+
             <p class="md:col-span-7 text-slate-300 leading-relaxed text-sm">${layer.detail}</p>
+
             <div class="md:col-span-2 flex md:justify-end">
               <span class="mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full"
                     style="color:${layer.ring};border:1px solid ${layer.ring};background:${layer.glow}">NOMINAL</span>
@@ -351,7 +492,7 @@
 
     // Live telemetry drift simulation [η]
     setInterval(() => {
-      const widths = { St: 99+Math.random()*0.9, Lo:100, T:99.5+Math.random()*0.5, Ac:97+Math.random()*1.5, η:98+Math.random()*0.8 };
+      const widths = { St: 99 + Math.random() * 0.9, Lo: 100, T: 99.5 + Math.random() * 0.5, Ac: 97 + Math.random() * 1.5, η: 98 + Math.random() * 0.8 };
       document.querySelectorAll('#telemetry-bars > div').forEach((row, i) => {
         const v = vectors[i];
         const bar = row.querySelector('div > div');
@@ -363,4 +504,5 @@
     }, 1200);
   </script>
 </body>
+
 </html>
