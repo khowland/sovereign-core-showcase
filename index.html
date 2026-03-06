@@ -139,12 +139,49 @@
       background: var(--bdg-color);
       animation: badge-glow 2.8s ease-in-out infinite;
       white-space: nowrap;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .arch-badge:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 28px var(--bdg-color), 0 0 8px var(--bdg-color);
+      animation-play-state: paused;
+    }
+
+    .arch-badge.open {
+      box-shadow: 0 0 36px var(--bdg-color), 0 0 12px var(--bdg-color);
+      animation-play-state: paused;
     }
 
     .arch-badge .badge-key {
       font-size: 0.85rem;
       letter-spacing: 0;
       opacity: 0.9;
+    }
+
+    .arch-badge .badge-arrow {
+      margin-left: 0.15rem;
+      font-size: 0.6rem;
+      transition: transform 0.25s ease;
+      opacity: 0.7;
+    }
+
+    .arch-badge.open .badge-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Expandable detail drawer */
+    .arch-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+      opacity: 0;
+    }
+
+    .arch-detail.open {
+      max-height: 600px;
+      opacity: 1;
     }
 
     section.view {
@@ -425,11 +462,61 @@
     ];
 
     const archLayers = [
-      { v: 'St', name: 'State Space', glow: 'rgba(96,165,250,0.15)', ring: 'rgba(96,165,250,0.25)', detail: 'Multidimensional representation of all persistent and ephemeral data. State is treated as a first-class citizen, ensuring consistency across distributed nodes. Foundations of BDE/MIP data persistence strategy.' },
-      { v: 'Lo', name: 'Invariant Control', glow: 'rgba(34,211,238,0.15)', ring: 'rgba(34,211,238,0.25)', detail: 'The logic layer that governs state transitions. No operation may violate fundamental constraints. Invariants are absolute — enforced at the policy layer with zero exceptions.' },
-      { v: 'T', name: 'Transformer', glow: 'rgba(192,132,252,0.15)', ring: 'rgba(192,132,252,0.25)', detail: 'Engine for data metamorphosis and agentic inference. All ETL transformations remain idempotent and auditable. Handles the mapping of raw state into actionable logic — including 20+ years of DoD ingestion patterns.' },
-      { v: 'Ac', name: 'Actuator', glow: 'rgba(251,146,60,0.15)', ring: 'rgba(251,146,60,0.25)', detail: 'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions. Granular, cryptographically verified control — aligned with DoD 8570 and FedRAMP.' },
-      { v: 'η', name: 'Resonance', glow: 'rgba(74,222,128,0.15)', ring: 'rgba(74,222,128,0.25)', detail: 'High-fidelity telemetry and alignment monitoring. Detects drift, cross-vector desynchronization, and systemic anomalies in real time — the feedback loop required for zero-trust assurance at nationwide scale.' },
+      {
+        v: 'St', name: 'State Space', glow: 'rgba(96,165,250,0.15)', ring: 'rgba(96,165,250,0.25)',
+        detail: 'Multidimensional representation of all persistent and ephemeral data. State is treated as a first-class citizen across distributed nodes.',
+        expanded: `
+          <p><strong>[St] — State Space</strong> is the sovereign memory of the system. Every record, relation, and runtime snapshot lives here. It defines what <em>is</em> — not just at this moment, but across the full history of operations.</p>
+          <ul>
+            <li><strong>BDE/MIP Application:</strong> Tactical state (unit positions, asset statuses, sensor feeds) must be queryable deterministically at any point in time. Immutable append-only logs back every read.</li>
+            <li><strong>Design Principle:</strong> All mutations are event-sourced. Rollback to any prior state is a first-class operation, not an emergency procedure.</li>
+            <li><strong>Scale:</strong> Architected for petabyte-scale coherence across air-gapped, cloud, and edge node environments simultaneously.</li>
+          </ul>`
+      },
+      {
+        v: 'Lo', name: 'Invariant Control', glow: 'rgba(34,211,238,0.15)', ring: 'rgba(34,211,238,0.25)',
+        detail: 'The logic layer governing all state transitions. No operation may violate fundamental constraints. Invariants are absolute — enforced at the policy layer with zero exceptions.',
+        expanded: `
+          <p><strong>[Lo] — Invariant Control</strong> is the law of the system. It defines what can and cannot happen — full stop. No bypass, no override without explicit re-attestation.</p>
+          <ul>
+            <li><strong>Zero-Trust DNA:</strong> Every state transition is validated against a policy invariant before it commits. Violations are rejected and emitted as [Ac] alerts immediately.</li>
+            <li><strong>DoD Context:</strong> In BDE/MIP environments, data integrity isn't a preference — it's a mission-critical constraint. [Lo] guarantees that no rogue write, malformed record, or compromised node can corrupt the operational picture.</li>
+            <li><strong>Implementation:</strong> Policy-as-code using declarative constraint graphs evaluated at the transaction boundary. Immutable audit records on every decision.</li>
+          </ul>`
+      },
+      {
+        v: 'T', name: 'Transformer', glow: 'rgba(192,132,252,0.15)', ring: 'rgba(192,132,252,0.25)',
+        detail: 'Engine for data metamorphosis and agentic inference. All ETL transformations remain idempotent and fully auditable.',
+        expanded: `
+          <p><strong>[T] — Transformer</strong> is the intelligence engine. Raw data comes in; actionable, validated, structured intelligence goes out. Every transformation is idempotent — run it once or a thousand times, the result is identical.</p>
+          <ul>
+            <li><strong>ETL Pedigree:</strong> 20+ years of designing transformation pipelines for DoD logistics, BDE/MIP intelligence feeds, industrial IoT telemetry, and public safety data. Every pattern is battle-tested at scale.</li>
+            <li><strong>Agentic Capability:</strong> [T] now drives the inference layer — LLM chains, vector embeddings, and semantic routing are all transformation operations under this vector.</li>
+            <li><strong>Guarantee:</strong> Each transform carries a provenance record: source hash, transformation coefficient, timestamp, and authorization tier. Non-negotiable for AU-12 compliance.</li>
+          </ul>`
+      },
+      {
+        v: 'Ac', name: 'Actuator', glow: 'rgba(251,146,60,0.15)', ring: 'rgba(251,146,60,0.25)',
+        detail: 'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions — cryptographically verified.',
+        expanded: `
+          <p><strong>[Ac] — Actuator</strong> is the gatekeeper. No action executes without passing through [Ac]. It owns the authorization boundary, the execution telemetry, and the kill-switch.</p>
+          <ul>
+            <li><strong>Zero-Trust Model:</strong> Every request is authenticated, authorized, and logged — even internal service-to-service calls. There is no implicit trust anywhere in the mesh.</li>
+            <li><strong>DoD 8570 Alignment:</strong> Role-based access is mapped directly to IA workforce tiers. L1–L5 authorization levels are enforced at the action layer, not the application layer.</li>
+            <li><strong>FedRAMP Ready:</strong> All actuation events are emitted as structured telemetry to the [η] Resonance layer. Compliance reporting is a byproduct of normal operation, not an afterthought.</li>
+          </ul>`
+      },
+      {
+        v: 'η', name: 'Resonance', glow: 'rgba(74,222,128,0.15)', ring: 'rgba(74,222,128,0.25)',
+        detail: 'High-fidelity telemetry and alignment monitoring. Real-time drift detection and cross-vector synchronization assurance.',
+        expanded: `
+          <p><strong>[η] — Resonance</strong> is the nervous system. It watches everything, measures everything, and surfaces deviations before they become failures. The system is only as trustworthy as its observability.</p>
+          <ul>
+            <li><strong>Drift Detection:</strong> Continuous cross-vector alignment scoring. When [St], [Lo], [T], or [Ac] begin to desynchronize — even subtly — [η] fires an alert before any downstream impact.</li>
+            <li><strong>Telemetry Design:</strong> Every event carries a resonance coefficient. Nominal is 98–100%. Below 95% triggers automated escalation. Below 90% triggers mesh partition and isolation.</li>
+            <li><strong>Nationwide Scale:</strong> Designed to monitor millions of events per second across distributed sovereign mesh nodes — from edge IoT sensors to DoD data centers.</li>
+          </ul>`
+      },
     ];
 
     // ── RENDER: Telemetry bars ─────────────────────────────────────────────────
@@ -485,34 +572,71 @@
     }
 
     // ── RENDER: Architecture layers ────────────────────────────────────────────
-    // Badge solid colors (full opacity, high contrast on dark bg)
     const badgeColors = { St: 'rgba(59,130,246,0.85)', Lo: 'rgba(6,182,212,0.85)', T: 'rgba(147,51,234,0.80)', Ac: 'rgba(234,88,12,0.85)', η: 'rgba(16,185,129,0.85)' };
     const archDelays = { St: '0s', Lo: '0.4s', T: '0.8s', Ac: '1.2s', η: '1.6s' };
+
+    // [Lo] Toggle — only one panel open at a time
+    function toggleArchDetail(v) {
+      archLayers.forEach(l => {
+        const detail = document.getElementById('arch-detail-' + l.v);
+        const badge = document.getElementById('arch-badge-' + l.v);
+        if (l.v === v) {
+          const isOpen = detail.classList.contains('open');
+          detail.classList.toggle('open', !isOpen);
+          badge.classList.toggle('open', !isOpen);
+        } else {
+          detail.classList.remove('open');
+          badge.classList.remove('open');
+        }
+      });
+    }
 
     function renderArchLayers() {
       document.getElementById('arch-layers').innerHTML = archLayers.map(layer => `
         <div class="glass rounded-2xl p-5 md:p-8 relative overflow-hidden group transition-all duration-300 hover:shadow-aegis-intense"
              style="background:linear-gradient(135deg, ${layer.glow} 0%, rgba(2,6,23,0.8) 60%)">
           <div class="absolute top-4 right-6 mono text-8xl font-black text-white opacity-[0.04] select-none group-hover:opacity-[0.08] transition-opacity">${layer.v}</div>
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center relative z-10">
 
-            <!-- [Lo] High-contrast animated badge -->
+          <!-- Row: badge | summary | status -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center relative z-10">
             <div class="md:col-span-3 flex items-start">
-              <span class="arch-badge"
-                    style="--bdg-color:${badgeColors[layer.v]};animation-delay:${archDelays[layer.v]}">
+              <button id="arch-badge-${layer.v}" class="arch-badge"
+                      style="--bdg-color:${badgeColors[layer.v]};animation-delay:${archDelays[layer.v]}"
+                      onclick="toggleArchDetail('${layer.v}')">
                 <span class="badge-key">[${layer.v}]</span>
                 ${layer.name}
-              </span>
+                <span class="badge-arrow">▼</span>
+              </button>
             </div>
-
             <p class="md:col-span-7 text-slate-300 leading-relaxed text-sm">${layer.detail}</p>
-
             <div class="md:col-span-2 flex md:justify-end">
               <span class="mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full"
                     style="color:${layer.ring};border:1px solid ${layer.ring};background:${layer.glow}">NOMINAL</span>
             </div>
           </div>
+
+          <!-- Expandable deep-dive drawer -->
+          <div id="arch-detail-${layer.v}" class="arch-detail">
+            <div class="mt-5 pt-5 border-t border-white/10"
+                 style="color:#cbd5e1;font-size:0.875rem;line-height:1.7">
+              <div style="border-left:3px solid ${badgeColors[layer.v]};padding-left:1rem;margin-bottom:0.75rem;">
+                <span class="mono" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:${layer.ring}">DEEP DIVE // [${layer.v}] ${layer.name}</span>
+              </div>
+              <div class="arch-expanded-content" style="padding-left:0.25rem">${layer.expanded}</div>
+            </div>
+          </div>
         </div>`).join('');
+
+      // Style expanded content lists
+      document.querySelectorAll('.arch-expanded-content ul').forEach(ul => {
+        ul.style.cssText = 'margin-top:0.75rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.5rem;list-style:none';
+        ul.querySelectorAll('li').forEach(li => {
+          li.style.cssText = 'position:relative;padding-left:1rem;color:#94a3b8';
+          li.insertAdjacentHTML('afterbegin', '<span style="position:absolute;left:0;color:#4ade80">›</span>');
+        });
+      });
+      document.querySelectorAll('.arch-expanded-content p').forEach(p => p.style.color = '#94a3b8');
+      document.querySelectorAll('.arch-expanded-content strong').forEach(s => s.style.color = '#e2e8f0');
     }
 
     // ── BOOT ───────────────────────────────────────────────────────────────────
