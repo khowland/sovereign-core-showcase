@@ -1,0 +1,15 @@
+﻿{
+  "bio": {
+    "name": "Kevin Howland",
+    "title": "Distinguished AI Systems Architect",
+    "tagline": "Architecting Resilient Intelligence. Nationwide Scale. Zero-Trust Assurance.",
+    "summary": "High-consequence data architect specializing in bridging the gap between deterministic integrity and modern agentic AI. Expertise in deploying nationwide, zero-trust frameworks for mission-critical systems."
+  },
+  "vectors": {
+    "St": "State Space: Multidimensional representation of persistent and ephemeral data nodes.",
+    "Lo": "Invariant Control: Logic layer governing state transitions through absolute policy constraints.",
+    "T": "Transformer: Engine for data metamorphosis and agentic inference with idempotent validation.",
+    "Ac": "Actuator: Zero-trust orchestration layer defining gated I/O and execution telemetry.",
+    "η": "Resonance: High-fidelity telemetry and alignment monitoring for real-time drift detection."
+  }
+}

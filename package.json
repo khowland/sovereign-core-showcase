@@ -1,0 +1,8 @@
+﻿{
+  "name": "sovereign-core-showcase",
+  "version": "1.0.0",
+  "description": "Nationwide AI Systems Architecture Showcase",
+  "scripts": {
+    "deploy": "gsutil rsync -R . gs://sovereign-core-showcase"
+  }
+}
