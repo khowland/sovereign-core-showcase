@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * @module SOVEREIGN-CORE
+ * @version 1.0.0
+ * @status [Ac/η] FINAL: Sovereign-Core Autonomous Deployment
+ * @author K. HOWLAND
+ */
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Database, Shield, Cpu, Activity, Zap } from 'lucide-react';
@@ -8,42 +15,42 @@ const ProfilePage = () => {
     const vectors = [
         {
             id: 'St',
-            name: 'Storage',
+            name: 'State Space',
             icon: <Database className="w-6 h-6" />,
-            description: '30+ Years High-Consequence ETL // DoD Contractor // Data Sovereignty Expert.',
+            description: 'Multidimensional representation of persistent and ephemeral data nodes. High-consequence data architect specializing in bridging the gap between deterministic integrity and modern agentic AI.',
             color: 'from-blue-500/10 to-transparent',
         },
         {
             id: 'Lo',
-            name: 'Logic',
+            name: 'Invariant Control',
             icon: <Shield className="w-6 h-6" />,
-            description: 'Lead Architect of Sovereign-Core // Deterministic Integrity // Policy-as-Code.',
+            description: 'Logic layer governing state transitions through absolute policy constraints. Expertise in deterministic integrity and policy-as-code.',
             color: 'from-cyan-500/10 to-transparent',
         },
         {
             id: 'T',
             name: 'Transformer',
             icon: <Cpu className="w-6 h-6" />,
-            description: 'Mesh Inference Specialist // Dagwood Sovereign Mesh // Multi-Agent Orchestration.',
+            description: 'Engine for data metamorphosis and agentic inference with idempotent validation. Specialist in mesh inference and multi-agent orchestration.',
             color: 'from-purple-500/10 to-transparent',
         },
         {
             id: 'Ac',
             name: 'Actuator',
             icon: <Zap className="w-6 h-6" />,
-            description: 'Zero-Trust Infrastructure // Secure CI/CD // Infrastructure-as-Identity.',
+            description: 'Zero-trust orchestration layer defining gated I/O and execution telemetry. Defining infrastructure-as-identity and secure CI/CD.',
             color: 'from-orange-500/10 to-transparent',
         },
         {
             id: 'η',
             name: 'Resonance',
             icon: <Activity className="w-6 h-6" />,
-            description: 'Telemetry Alignment // Real-Time Monitoring // Systemic Harmony.',
+            description: 'High-fidelity telemetry and alignment monitoring for real-time drift detection. Ensuring systemic harmony and zero-trust assurance.',
             color: 'from-emerald-500/10 to-transparent',
         },
     ];
 
-    const glassStyle = "backdrop-blur-xl bg-white/5 border border-white/10 rounded-[2rem] p-8";
+    const glassStyle = "backdrop-blur-xl bg-slate-950/50 border border-white/10 rounded-[2rem] p-8";
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans p-8 md:p-16 selection:bg-cyan-500/30">

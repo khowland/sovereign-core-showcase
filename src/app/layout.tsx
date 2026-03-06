@@ -1,3 +1,9 @@
+/**
+ * @module SOVEREIGN-CORE
+ * @version 1.0.0
+ * @status [Ac/η] FINAL: Sovereign-Core Autonomous Deployment
+ * @author K. HOWLAND
+ */
 import React from 'react';
 import './globals.css';
 import { Inter } from 'next/font/google';

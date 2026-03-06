@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 /**
  * SOVEREIGN-CORE v1.0.0 // K. HOWLAND

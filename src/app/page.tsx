@@ -1,5 +1,18 @@
 'use client';
 
+/**
+ * @module SOVEREIGN-CORE
+ * @version 1.0.0
+ * @status [Ac/η] FINAL: Sovereign-Core Autonomous Deployment
+ * @author K. HOWLAND
+ */
+
+/**
+ * @module SOVEREIGN-CORE
+ * @version 1.0.0
+ * @status [Ac/η] FINAL: Sovereign-Core Autonomous Deployment
+ * @author K. HOWLAND
+ */
 import React from 'react';
 import { motion } from 'framer-motion';
 import ResonanceMonitor from '../components/ResonanceMonitor';
@@ -21,7 +34,7 @@ const MissionReadinessDashboard = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-16 shadow-2xl relative overflow-hidden"
+                    className="bg-slate-950/50 border border-white/10 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-16 shadow-2xl relative overflow-hidden"
                 >
                     {/* Decorative Corner Accents */}
                     <div className="absolute top-0 right-0 p-8">
