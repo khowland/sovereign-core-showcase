@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * SOVEREIGN-CORE v1.0.0 // K. HOWLAND
- * Component: ResonanceMonitor
- * Aesthetic: High-Density Telemetry (#00FF00 on Black)
- * Goal: Visualize health for [St, Lo, T, Ac, η]
+ * @component ResonanceMonitor
+ * @description A high-density telemetry visualization component for monitoring the Five Vector Schema.
+ * Tracks [St] Safe Vaults, [Lo] Safety Rules, [T] Analysis, [Ac] Action, and [η] Reliable Results.
+ * @aesthetics High-Density Telemetry (Cyan on Translucent Slate)
+ * @version 1.1.0
  */
 
+/**
+ * @interface VectorState
+ * @description Defines the schema for individual vector telemetry objects.
+ */
 interface VectorState {
     label: string;
     value: number;
@@ -18,11 +23,11 @@ interface VectorState {
 const ResonanceMonitor: React.FC = () => {
     const [alignment, setAlignment] = useState<number>(98.42);
     const [vectors, setVectors] = useState<Record<string, VectorState>>({
-        St: { label: 'State Space', value: 1024.4, status: 'NOMINAL', unit: 'PB' },
-        Lo: { label: 'Invariant Law', value: 100, status: 'NOMINAL', unit: '%' },
-        T: { label: 'Transformer', value: 0.999, status: 'NOMINAL', unit: 'coeff' },
-        Ac: { label: 'Action & Access', value: 4502, status: 'NOMINAL', unit: 'req/s' },
-        η: { label: 'Resonance', value: 0.12, status: 'NOMINAL', unit: 'Δ' },
+        St: { label: 'Safe Vaults', value: 1024.4, status: 'NOMINAL', unit: 'PB' },
+        Lo: { label: 'Safety Rules', value: 100, status: 'NOMINAL', unit: '%' },
+        T: { label: 'Analysis', value: 0.999, status: 'NOMINAL', unit: 'coeff' },
+        Ac: { label: 'Action', value: 4502, status: 'NOMINAL', unit: 'req/s' },
+        η: { label: 'Reliable Results', value: 0.12, status: 'NOMINAL', unit: 'Δ' },
     });
 
     // Mock telemetry loop
@@ -48,8 +53,8 @@ const ResonanceMonitor: React.FC = () => {
     return (
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 text-slate-200 font-mono p-4 rounded-2xl flex flex-col h-full overflow-hidden shadow-2xl relative">
             <header className="flex justify-between border-b border-white/10 pb-2 mb-4 text-xs font-bold text-cyan-400 uppercase tracking-widest">
-                <div>SOVEREIGN-CORE v1.0.0 // K. HOWLAND</div>
-                <div className="opacity-60">[Lo] INVARIANT LOCK: ACTIVE</div>
+                <div>Sovereign-Core v1.0.0 // K. HOWLAND</div>
+                <div className="opacity-60">[Lo] SAFETY RULES: ENFORCED</div>
             </header>
 
             <main className="flex-1 flex flex-col gap-6">
@@ -87,7 +92,7 @@ const ResonanceMonitor: React.FC = () => {
                 <section className="flex-1 border border-white/10 p-4 bg-white/5 rounded-xl overflow-hidden relative">
                     <div className="text-[10px] tracking-[0.2em] mb-2 border-l-2 border-cyan-400 pl-2 text-cyan-400 uppercase">Real-Time Telemetry Stream</div>
                     <div className="text-[10px] leading-relaxed opacity-60 font-mono whitespace-pre-wrap">
-                        {`> [St] COHERENCE DETECTED: 0.9998... OK\n> [Lo] ENFORCING BOUNDARY: VOID-PTR-GDR... ACTIVE\n> [T] IDEMPOTENT TRANSFORM COMPLETE: MAPPING -> ACT_LOGIC\n> [Ac] ZERO-TRUST HANDSHAKE: K.HOWLAND (TRUSTED)\n> [η] SYSTEM DRIFT: 0.00012ms... WITHIN TOLERANCE`}
+                        {`> [St] SAFE VAULT SYNC COMPLETE... OK\n> [Lo] ENFORCING SAFETY RULES... ACTIVE\n> [T] ANALYSIS COMPLETE: CLEANING -> READY\n> [Ac] SECURITY VERIFIED: K.HOWLAND (TRUSTED)\n> [η] SYSTEM MONITORING... WITHIN TOLERANCE`}
                     </div>
                 </section>
             </main>

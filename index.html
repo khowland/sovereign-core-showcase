@@ -16,12 +16,10 @@
                 Tailwind Play CDN. JavaScript toggleView() state machine.
                 Designed to zero-trust standards for public showcase.
   ----------------------------------------------------------------------------
-  VECTORS     : [St] State Space  |  [Lo] Invariant Control  |  [T] Transformer
-                [Ac] Actuator     |  [η]  Resonance
+  VECTORS     : [St] Safe Vaults  |  [Lo] Safety Rules  |  [T] Analysis
+                [Ac] Action     |  [η]  Reliable Results
   ----------------------------------------------------------------------------
-  COMPLIANCE  : NIST SP 800-53 (AU-2, AU-9, AU-12)
-                DoD 8570.01-M - IA Workforce Management
-                NIST SP 800-207 - Zero-Trust Architecture
+  COMPLIANCE  : Strict security guardrails and verification
   ----------------------------------------------------------------------------
   CHANGE LOG
   ----------
@@ -307,17 +305,17 @@
           <!-- Live telemetry panel -->
           <div class="glass-card rounded-2xl p-5 font-mono space-y-3 text-xs">
             <div class="flex justify-between border-b border-white/10 pb-2 text-[10px] mono uppercase tracking-widest">
-              <span class="text-cyan-400">RESONANCE MONITOR // live</span>
+              <span class="text-cyan-400">RELIABILITY MONITOR // live</span>
               <span class="text-slate-500">[η] ACTIVE</span>
             </div>
             <div id="telemetry-bars" class="space-y-2">
               <!-- JS-populated below -->
             </div>
             <div class="border-t border-white/10 pt-2 text-[9px] text-slate-500 mono leading-relaxed">
-              &gt; [St] COHERENCE: 99.98%… OK<br>
-              &gt; [Lo] INVARIANT LOCK: ACTIVE<br>
-              &gt; [Ac] ZERO-TRUST HANDSHAKE: K.HOWLAND ✓<br>
-              &gt; [η] DRIFT: 0.00012ms… WITHIN TOLERANCE
+              &gt; [St] VAULT SYNC: 99.98%… OK<br>
+              &gt; [Lo] SAFETY RULES: ACTIVE<br>
+              &gt; [Ac] SECURITY CHECK: K.HOWLAND ✓<br>
+              &gt; [η] RELIABILITY: 99.8%… OPTIMAL
             </div>
           </div>
         </div>
@@ -404,12 +402,11 @@
     <!-- Footer ticker -->
     <footer class="overflow-hidden border-t border-white/5 py-3">
       <div class="mono text-[10px] text-slate-600 uppercase tracking-widest animate-ticker whitespace-nowrap">
-        © 2026 SOVEREIGN-CORE &nbsp;//&nbsp; ZERO-TRUST PROTOCOL ACTIVE &nbsp;//&nbsp; K. HOWLAND &nbsp;//&nbsp;
-        [St] STATE: STABLE &nbsp;//&nbsp; [Lo] INVARIANTS: LOCKED &nbsp;//&nbsp; [T] TRANSFORM: IDEMPOTENT
+        © 2026 SOVEREIGN-CORE &nbsp;//&nbsp; SECURITY GUARDRAILS ACTIVE &nbsp;//&nbsp; K. HOWLAND &nbsp;//&nbsp;
+        [St] VAULTS: SECURE &nbsp;//&nbsp; [Lo] RULES: ENFORCED &nbsp;//&nbsp; [T] ANALYSIS: RELIABLE &nbsp;//&nbsp;
+        [Ac] ACTION: VERIFIED &nbsp;//&nbsp; [η] RESULTS: 98.42% &nbsp;//&nbsp; NATIONWIDE DEPLOYMENT SECURED
         &nbsp;//&nbsp;
-        [Ac] ACCESS: GATED &nbsp;//&nbsp; [η] RESONANCE: 98.42% &nbsp;//&nbsp; NATIONWIDE DEPLOYMENT SECURED
-        &nbsp;//&nbsp;
-        BDE/MIP PIPELINE: OPERATIONAL &nbsp;//&nbsp; DOD ETL PEDIGREE: 20+ YEARS &nbsp;//&nbsp;
+        MISSION PIPELINE: OPERATIONAL &nbsp;//&nbsp; SECURE PIPELINE PEDIGREE: 20+ YEARS &nbsp;//&nbsp;
       </div>
     </footer>
   </div>
@@ -431,11 +428,11 @@
 
     // ── DATA ───────────────────────────────────────────────────────────────────
     const vectors = [
-      { key: 'St', label: 'State Space', color: '#60a5fa', def: 'Multidimensional representation of persistent and ephemeral data nodes.' },
-      { key: 'Lo', label: 'Invariant Control', color: '#22d3ee', def: 'Logic layer governing state transitions through absolute policy constraints.' },
-      { key: 'T', label: 'Transformer', color: '#c084fc', def: 'Engine for data metamorphosis and agentic inference with idempotent validation.' },
-      { key: 'Ac', label: 'Actuator', color: '#fb923c', def: 'Zero-trust orchestration layer defining gated I/O and execution telemetry.' },
-      { key: 'η', label: 'Resonance', color: '#4ade80', def: 'High-fidelity telemetry and alignment monitoring for real-time drift detection.' },
+      { key: 'St', label: 'Safe Vaults', color: '#60a5fa', def: 'Permanent storage and clear logs that no one can change once saved.' },
+      { key: 'Lo', label: 'Safety Rules', color: '#22d3ee', def: 'Strict rules to make sure data is always handled and moved safely.' },
+      { key: 'T', label: 'Analysis', color: '#c084fc', def: 'A high-speed engine that cleans and organizes data for smart tools.' },
+      { key: 'Ac', label: 'Action', color: '#fb923c', def: 'Fast tools that build and deploy systems automatically at light speed.' },
+      { key: 'η', label: 'Reliable Results', color: '#4ade80', def: 'Making sure technical data stays on track for important missions.' },
     ];
 
     const timeline = [
@@ -461,60 +458,64 @@
       },
     ];
 
+    // ── RENDER: Architecture layers ────────────────────────────────────────────
+    const badgeColors = { St: 'rgba(59,130,246,0.85)', Lo: 'rgba(6,182,212,0.85)', T: 'rgba(147,51,234,0.80)', Ac: 'rgba(234,88,12,0.85)', η: 'rgba(16,185,129,0.85)' };
+    const archDelays = { St: '0s', Lo: '0.4s', T: '0.8s', Ac: '1.2s', η: '1.6s' };
+
     const archLayers = [
       {
-        v: 'St', name: 'State Space', glow: 'rgba(96,165,250,0.15)', ring: 'rgba(96,165,250,0.25)',
-        detail: 'Multidimensional representation of all persistent and ephemeral data. State is treated as a first-class citizen across distributed nodes.',
+        v: 'St', name: 'Safe Vaults', glow: 'rgba(96,165,250,0.15)', ring: 'rgba(96,165,250,0.25)',
+        detail: 'A high-speed way to save and track all data. We treat data like a first-class citizen to make sure it is consistent across all systems.',
         expanded: `
-          <p><strong>[St] - State Space</strong> is the sovereign memory of the system. Every record, relation, and runtime snapshot lives here. It defines what <em>is</em> - not just at this moment, but across the full history of operations.</p>
+          <p><strong>[St] - Safe Vaults</strong> is the secure memory of the system. Every record lives here.</p>
           <ul>
-            <li><strong>BDE/MIP Application:</strong> Tactical state (unit positions, asset statuses, sensor feeds) must be queryable deterministically at any point in time. Immutable append-only logs back every read.</li>
-            <li><strong>Design Principle:</strong> All mutations are event-sourced. Rollback to any prior state is a first-class operation, not an emergency procedure.</li>
-            <li><strong>Scale:</strong> Architected for petabyte-scale coherence across air-gapped, cloud, and edge node environments simultaneously.</li>
+            <li><strong>Mission Application:</strong> Data must be securely queryable at any point in time. Unchangeable logs back every read.</li>
+            <li><strong>Design Principle:</strong> If a mistake happens, returning to a safe previous state is an easy, built-in feature.</li>
+            <li><strong>Scale:</strong> Built for moving massive amounts of information safely across distributed secure facilities.</li>
           </ul>`
       },
       {
-        v: 'Lo', name: 'Invariant Control', glow: 'rgba(34,211,238,0.15)', ring: 'rgba(34,211,238,0.25)',
-        detail: 'The logic layer governing all state transitions. No operation may violate fundamental constraints. Invariants are absolute - enforced at the policy layer with zero exceptions.',
+        v: 'Lo', name: 'Safety Rules', glow: 'rgba(34,211,238,0.15)', ring: 'rgba(34,211,238,0.25)',
+        detail: 'The layers of logic that keep the system safe. These rules make sure every action follows our strict safety standards. These rules are absolute.',
         expanded: `
-          <p><strong>[Lo] - Invariant Control</strong> is the law of the system. It defines what can and cannot happen - full stop. No bypass, no override without explicit re-attestation.</p>
+          <p><strong>[Lo] - Safety Rules</strong> form the law of the system. It defines what can and cannot happen - full stop. No bypass without explicit verification.</p>
           <ul>
-            <li><strong>Zero-Trust DNA:</strong> Every state transition is validated against a policy invariant before it commits. Violations are rejected and emitted as [Ac] alerts immediately.</li>
-            <li><strong>DoD Context:</strong> In BDE/MIP environments, data integrity isn't a preference - it's a mission-critical constraint. [Lo] guarantees that no rogue write, malformed record, or compromised node can corrupt the operational picture.</li>
-            <li><strong>Implementation:</strong> Policy-as-code using declarative constraint graphs evaluated at the transaction boundary. Immutable audit records on every decision.</li>
+            <li><strong>Verify everything:</strong> Every transmission is checked against a safety rule before it happens. Bad data is blocked immediately.</li>
+            <li><strong>Mission Context:</strong> Data security isn't a preference - it's a mission-critical constraint. [Lo] guarantees that no corrupted information affects the mission.</li>
+            <li><strong>Implementation:</strong> We use digital guardrails built directly into the system code to keep things safe.</li>
           </ul>`
       },
       {
-        v: 'T', name: 'Transformer', glow: 'rgba(192,132,252,0.15)', ring: 'rgba(192,132,252,0.25)',
-        detail: 'Engine for data metamorphosis and agentic inference. All ETL transformations remain idempotent and fully auditable.',
+        v: 'T', name: 'Analysis', glow: 'rgba(192,132,252,0.15)', ring: 'rgba(192,132,252,0.25)',
+        detail: 'A high-speed engine for cleaning and organizing data. It handles raw information and makes it ready for AI tools while keeping a clear record.',
         expanded: `
-          <p><strong>[T] - Transformer</strong> is the intelligence engine. Raw data comes in; actionable, validated, structured intelligence goes out. Every transformation is idempotent - run it once or a thousand times, the result is identical.</p>
+          <p><strong>[T] - Analysis</strong> is the intelligence engine. Incoming data goes in; clean, reliable results come out. Every clear step is guaranteed to be consistent.</p>
           <ul>
-            <li><strong>ETL Pedigree:</strong> 20+ years of designing transformation pipelines for DoD logistics, BDE/MIP intelligence feeds, industrial IoT telemetry, and public safety data. Every pattern is battle-tested at scale.</li>
-            <li><strong>Agentic Capability:</strong> [T] now drives the inference layer - LLM chains, vector embeddings, and semantic routing are all transformation operations under this vector.</li>
-            <li><strong>Guarantee:</strong> Each transform carries a provenance record: source hash, transformation coefficient, timestamp, and authorization tier. Non-negotiable for AU-12 compliance.</li>
+            <li><strong>Experience base:</strong> Built on 20+ years of designing data pipelines for secure government intelligence networks.</li>
+            <li><strong>AI Tooling:</strong> [T] moves data at light speed and organizes it cleanly for smart inference tools and systems.</li>
+            <li><strong>Guarantee:</strong> Each analysis step carries a clear, unchangeable record of exactly what was done and when.</li>
           </ul>`
       },
       {
-        v: 'Ac', name: 'Actuator', glow: 'rgba(251,146,60,0.15)', ring: 'rgba(251,146,60,0.25)',
-        detail: 'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions - cryptographically verified.',
+        v: 'Ac', name: 'Action', glow: 'rgba(251,146,60,0.15)', ring: 'rgba(251,146,60,0.25)',
+        detail: 'A safe system for controlling who can do what. We verify everything before any action is taken to ensure complete security.',
         expanded: `
-          <p><strong>[Ac] - Actuator</strong> is the gatekeeper. No action executes without passing through [Ac]. It owns the authorization boundary, the execution telemetry, and the kill-switch.</p>
+          <p><strong>[Ac] - Action</strong> is the gatekeeper. No action executes without passing through [Ac]. It controls access and acts as the final guardrail.</p>
           <ul>
-            <li><strong>Zero-Trust Model:</strong> Every request is authenticated, authorized, and logged - even internal service-to-service calls. There is no implicit trust anywhere in the mesh.</li>
-            <li><strong>DoD 8570 Alignment:</strong> Role-based access is mapped directly to IA workforce tiers. L1-L5 authorization levels are enforced at the action layer, not the application layer.</li>
-            <li><strong>FedRAMP Ready:</strong> All actuation events are emitted as structured telemetry to the [η] Resonance layer. Compliance reporting is a byproduct of normal operation, not an afterthought.</li>
+            <li><strong>Verify everywhere model:</strong> Every request is checked, verified, and logged. We rely on strict authorization.</li>
+            <li><strong>Strict Control:</strong> Access rules are enforced automatically by the system to maintain complete control.</li>
+            <li><strong>Security First:</strong> Every action is clearly logged for safety reviews and audit monitoring.</li>
           </ul>`
       },
       {
-        v: 'η', name: 'Resonance', glow: 'rgba(74,222,128,0.15)', ring: 'rgba(74,222,128,0.25)',
-        detail: 'High-fidelity telemetry and alignment monitoring. Real-time drift detection and cross-vector synchronization assurance.',
+        v: 'η', name: 'Reliable Results', glow: 'rgba(74,222,128,0.15)', ring: 'rgba(74,222,128,0.25)',
+        detail: 'A high-speed monitoring system. It checks system health and makes sure everything stays on track and follows our security rules in real-time.',
         expanded: `
-          <p><strong>[η] - Resonance</strong> is the nervous system. It watches everything, measures everything, and surfaces deviations before they become failures. The system is only as trustworthy as its observability.</p>
+          <p><strong>[η] - Reliable Results</strong> is the dashboard's nervous system. It watches everything, measures everything, and ensures the AI stays on track.</p>
           <ul>
-            <li><strong>Drift Detection:</strong> Continuous cross-vector alignment scoring. When [St], [Lo], [T], or [Ac] begin to desynchronize - even subtly - [η] fires an alert before any downstream impact.</li>
-            <li><strong>Telemetry Design:</strong> Every event carries a resonance coefficient. Nominal is 98-100%. Below 95% triggers automated escalation. Below 90% triggers mesh partition and isolation.</li>
-            <li><strong>Nationwide Scale:</strong> Designed to monitor millions of events per second across distributed sovereign mesh nodes - from edge IoT sensors to DoD data centers.</li>
+            <li><strong>Safety Monitoring:</strong> Continuous checking of system rules. If safety layers show any sign of failing, [η] triggers quick secure isolation.</li>
+            <li><strong>Telemetry Design:</strong> Every event carries an alignment score to ensure total system reliability and safety.</li>
+            <li><strong>Nationwide Scale:</strong> Designed to monitor millions of events securely across the country.</li>
           </ul>`
       },
     ];
