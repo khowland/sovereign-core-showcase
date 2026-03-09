@@ -1,66 +1,160 @@
 'use client';
 
 /**
- * @module SOVEREIGN-CORE
- * @version 1.0.0
- * @status [Ac/η] FINAL: Sovereign-Core Autonomous Deployment
- * @author K. HOWLAND
+ * @file profile/page.tsx
+ * @module sovereign-core-showcase
+ * @description Professional profile page for Kevin R. Howland.
+ * Presents employment history, technical stack, and the Five Vector Schema
+ * as a governance framework -- targeting technical hiring managers and
+ * federal/defense architects.
+ * @author K. Howland
+ * @version 2.0.0
  */
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Database, Shield, Cpu, Activity, Zap } from 'lucide-react';
+import { Database, Shield, Cpu, Zap, Activity, Briefcase, Code2 } from 'lucide-react';
 
-const ProfilePage = () => {
-    const vectors = [
-        {
-            id: 'St',
-            name: 'State Space',
-            icon: <Database className="w-6 h-6" />,
-            description: 'Multidimensional representation of persistent and ephemeral data nodes. High-consequence data architect specializing in bridging the gap between deterministic integrity and modern agentic AI.',
-            color: 'from-blue-500/10 to-transparent',
-        },
-        {
-            id: 'Lo',
-            name: 'Invariant Control',
-            icon: <Shield className="w-6 h-6" />,
-            description: 'Logic layer governing state transitions through absolute policy constraints. Expertise in deterministic integrity and policy-as-code.',
-            color: 'from-cyan-500/10 to-transparent',
-        },
-        {
-            id: 'T',
-            name: 'Transformer',
-            icon: <Cpu className="w-6 h-6" />,
-            description: 'Engine for data metamorphosis and agentic inference with idempotent validation. Specialist in mesh inference and multi-agent orchestration.',
-            color: 'from-purple-500/10 to-transparent',
-        },
-        {
-            id: 'Ac',
-            name: 'Actuator',
-            icon: <Zap className="w-6 h-6" />,
-            description: 'Zero-trust orchestration layer defining gated I/O and execution telemetry. Defining infrastructure-as-identity and secure CI/CD.',
-            color: 'from-orange-500/10 to-transparent',
-        },
-        {
-            id: 'η',
-            name: 'Resonance',
-            icon: <Activity className="w-6 h-6" />,
-            description: 'High-fidelity telemetry and alignment monitoring for real-time drift detection. Ensuring systemic harmony and zero-trust assurance.',
-            color: 'from-emerald-500/10 to-transparent',
-        },
-    ];
+/** A single employment record displayed in the experience timeline. */
+interface ExperienceEntry {
+    company: string;
+    role: string;
+    period: string;
+    tags: string[];
+    bullets: string[];
+}
 
-    const glassStyle = "backdrop-blur-xl bg-slate-950/50 border border-white/10 rounded-[2rem] p-8";
+/** A single skill category in the technical stack matrix. */
+interface StackCategory {
+    label: string;
+    items: string[];
+}
+
+/** Employment history in reverse chronological order. */
+const EXPERIENCE: ExperienceEntry[] = [
+    {
+        company: 'DDC-Dine | DoD/DHA - NIWC',
+        role: 'Senior ETL Developer',
+        period: 'Dec 2022 - Present',
+        tags: ['Federal', 'Zero-Trust', 'HL7', 'BDE'],
+        bullets: [
+            'Architecting secure Bulk Data Exchange (BDE) frameworks for mission-critical Defense Health Agency data synchronization.',
+            'Managing multi-terabyte Amazon Redshift clusters with schema optimization and high-availability configuration for federal data persistence.',
+            'Building custom Python, Java, and Talend parsers for HL7 OBX (Observation) data streams.',
+            'Enforcing PHI/PII integrity through strict validation gates within a zero-trust federal environment.',
+        ],
+    },
+    {
+        company: 'Xsolis.com',
+        role: 'Senior Data Engineer',
+        period: 'Prior',
+        tags: ['Healthcare AI', 'SQL Server', 'Predictive Analytics'],
+        bullets: [
+            'Engineered feature enhancements for the CORTEX AI platform across 21 production SQL Servers.',
+            'Integrated predictive analytics into real-time patient diagnostic data pipelines.',
+        ],
+    },
+    {
+        company: 'Cigna',
+        role: 'Senior Database Developer',
+        period: 'Prior',
+        tags: ['SSIS', 'T-SQL', 'Performance'],
+        bullets: [
+            'Refactored 20+ legacy SSIS packages into optimized T-SQL stored procedures.',
+            'Achieved a 50% improvement in pipeline throughput and processing efficiency.',
+        ],
+    },
+    {
+        company: 'CB Richard Ellis',
+        role: 'IT Business Systems Manager',
+        period: 'Prior',
+        tags: ['PeopleSoft', 'CRM', 'Team Lead'],
+        bullets: [
+            'Led a team of 4 engineers through the national rollout of PeopleSoft CRM.',
+            'Managed the RealHound database ecosystem across enterprise business units.',
+        ],
+    },
+];
+
+/** Technical skill categories for the stack matrix. */
+const STACK: StackCategory[] = [
+    {
+        label: 'Data & Warehousing',
+        items: ['AWS Redshift', 'MS SQL Server', 'Oracle', 'T-SQL', 'SSIS', 'BDE Protocols', 'HL7'],
+    },
+    {
+        label: 'AI & Agentic Engineering',
+        items: ['Agent Orchestration', 'Five Vector Schema', 'Token Optimization', 'Zero-Trust Prompting', 'Loop Mitigation'],
+    },
+    {
+        label: 'Development',
+        items: ['Python', 'Java', 'Talend Studio', 'Bash/Shell', 'REST API', 'Workstreams.ai'],
+    },
+];
+
+/** Icon mapping for the Five Vector governance cards. */
+const VECTORS = [
+    {
+        id: 'St',
+        name: 'Storage',
+        icon: Database,
+        color: 'from-blue-500/10 to-transparent',
+        accent: 'text-blue-400',
+        description:
+            'Multi-terabyte data persistence across AWS Redshift, SQL Server, and Oracle. Schema-optimized for high-availability federal workloads with full audit trails.',
+    },
+    {
+        id: 'Lo',
+        name: 'Invariant Control',
+        icon: Shield,
+        color: 'from-cyan-500/10 to-transparent',
+        accent: 'text-cyan-400',
+        description:
+            'Policy-as-code validation gates enforcing PHI/PII integrity. Zero-trust constraints prevent unauthorized state transitions at every pipeline stage.',
+    },
+    {
+        id: 'T',
+        name: 'Transformer',
+        icon: Cpu,
+        color: 'from-purple-500/10 to-transparent',
+        accent: 'text-purple-400',
+        description:
+            'Idempotent ETL transforms using Python, Java, and Talend for HL7 data streams. Every transformation is auditable and reproducible.',
+    },
+    {
+        id: 'Ac',
+        name: 'Actuator',
+        icon: Zap,
+        color: 'from-orange-500/10 to-transparent',
+        accent: 'text-orange-400',
+        description:
+            'BDE ingestion frameworks and secure REST API layers for mission-critical data synchronization. Gated I/O with cryptographically verified access.',
+    },
+    {
+        id: 'η',
+        name: 'Resonance',
+        icon: Activity,
+        color: 'from-emerald-500/10 to-transparent',
+        accent: 'text-emerald-400',
+        description:
+            'Real-time telemetry and drift monitoring across all pipeline stages. Structured provenance logging for compliance, audit, and zero-trust assurance.',
+    },
+];
+
+const ProfilePage: React.FC = () => {
+    const glass = 'backdrop-blur-xl bg-slate-950/50 border border-white/10 rounded-[2rem] p-8';
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans p-8 md:p-16 selection:bg-cyan-500/30">
-            {/* Background Glows */}
+
+            {/* Background glows */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/5 blur-[120px] rounded-full" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/5 blur-[120px] rounded-full" />
             </div>
 
             <main className="relative z-10 max-w-6xl mx-auto space-y-16">
+
                 {/* Header */}
                 <header className="space-y-4">
                     <motion.div
@@ -69,73 +163,170 @@ const ProfilePage = () => {
                         className="flex items-center gap-4"
                     >
                         <div className="h-px w-12 bg-cyan-500/50" />
-                        <span className="text-cyan-400 font-mono tracking-widest text-xs uppercase">Secure Clearance: Level 5 // Distinguished Architect</span>
+                        <span className="text-cyan-400 font-mono tracking-widest text-xs uppercase">
+                            US Navy Reserves | IT2 | Available for Federal Engagements
+                        </span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-6xl md:text-8xl font-bold tracking-tight text-white uppercase"
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                        className="text-5xl md:text-7xl font-bold tracking-tight text-white uppercase"
                     >
-                        ARCHITECT <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-slate-400">PROFILE</span>
+                        Kevin R.{' '}
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-slate-400">
+                            Howland
+                        </span>
                     </motion.h1>
 
-                    <motion.div
+                    <motion.p
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-xl text-slate-400 font-light max-w-2xl leading-relaxed uppercase tracking-wide"
+                        className="text-xl text-slate-400 font-light max-w-3xl leading-relaxed"
                     >
-                        K. HOWLAND // LEAD SYSTEMS DESIGNER AT <span className="text-white font-medium">SOVEREIGN-CORE</span>
-                    </motion.div>
+                        Senior Database &amp; ETL Developer | AI Systems Architect
+                    </motion.p>
                 </header>
 
-                {/* Vector Grid */}
-                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {vectors.map((vector, idx) => (
-                        <motion.div
-                            key={vector.id}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.1 * idx + 0.3 }}
-                            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                            className={`${glassStyle} group relative overflow-hidden flex flex-col items-start gap-6`}
-                        >
-                            {/* Card Accent Glow */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${vector.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                {/* Experience Timeline */}
+                <section className="space-y-6">
+                    <div className="flex items-center gap-4">
+                        <Briefcase className="w-5 h-5 text-cyan-400" />
+                        <h2 className="text-sm font-mono uppercase tracking-widest text-cyan-400">Experience</h2>
+                    </div>
 
-                            <div className="relative z-10 flex items-center justify-between w-full">
-                                <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-white/20 transition-colors">
-                                    {vector.icon}
+                    <div className="space-y-6">
+                        {EXPERIENCE.map((job, idx) => (
+                            <motion.div
+                                key={job.company}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.1 * idx + 0.2 }}
+                                className={glass}
+                            >
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-white">{job.company}</h3>
+                                        <p className="text-cyan-400 font-mono text-sm">{job.role}</p>
+                                    </div>
+                                    <span className="text-slate-500 font-mono text-xs uppercase tracking-widest whitespace-nowrap">
+                                        {job.period}
+                                    </span>
                                 </div>
-                                <span className="font-mono text-cyan-400/50 text-xl">[{vector.id}]</span>
-                            </div>
 
-                            <div className="relative z-10 space-y-2">
-                                <h3 className="text-xl font-semibold text-white tracking-wide uppercase">{vector.name}</h3>
-                                <p className="text-slate-400 leading-relaxed font-light">
-                                    {vector.description}
-                                </p>
-                            </div>
+                                <ul className="space-y-2 mb-4">
+                                    {job.bullets.map((b) => (
+                                        <li key={b} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
+                                            <span className="text-emerald-500 mt-1 shrink-0">-</span>
+                                            {b}
+                                        </li>
+                                    ))}
+                                </ul>
 
-                            <div className="relative z-10 mt-auto pt-4 w-full flex justify-end">
-                                <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-400/40 font-mono">
-                                    Vector Analysis Log // 0xCC4{idx}
+                                <div className="flex flex-wrap gap-2">
+                                    {job.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-3 py-1 text-[10px] font-mono uppercase tracking-widest bg-white/5 border border-white/10 rounded-full text-slate-400"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </div>
                 </section>
 
-                {/* Footer Metadata */}
+                {/* Technical Stack */}
+                <section className="space-y-6">
+                    <div className="flex items-center gap-4">
+                        <Code2 className="w-5 h-5 text-cyan-400" />
+                        <h2 className="text-sm font-mono uppercase tracking-widest text-cyan-400">Technical Stack</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {STACK.map((cat, idx) => (
+                            <motion.div
+                                key={cat.label}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1 * idx + 0.3 }}
+                                className={glass}
+                            >
+                                <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-4">
+                                    {cat.label}
+                                </h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {cat.items.map((item) => (
+                                        <span
+                                            key={item}
+                                            className="px-3 py-1 text-xs bg-white/5 border border-white/10 rounded-lg text-slate-300 font-mono"
+                                        >
+                                            {item}
+                                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Five Vector Governance Cards */}
+                <section className="space-y-6">
+                    <div className="flex items-center gap-4">
+                        <Activity className="w-5 h-5 text-cyan-400" />
+                        <h2 className="text-sm font-mono uppercase tracking-widest text-cyan-400">
+                            Five Vector Governance Framework
+                        </h2>
+                    </div>
+                    <p className="text-slate-400 text-sm max-w-2xl">
+                        A structured schema for separating policy from execution in enterprise AI pipelines.
+                        Applied across all data engineering and agentic orchestration work.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {VECTORS.map((v, idx) => (
+                            <motion.div
+                                key={v.id}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.1 * idx + 0.3 }}
+                                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                                className={`${glass} group relative overflow-hidden flex flex-col items-start gap-6`}
+                            >
+                                <div
+                                    className={`absolute inset-0 bg-gradient-to-br ${v.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                                />
+                                <div className="relative z-10 flex items-center justify-between w-full">
+                                    <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+                                        <v.icon className={`w-6 h-6 ${v.accent}`} />
+                                    </div>
+                                    <span className={`font-mono text-xl ${v.accent} opacity-50`}>[{v.id}]</span>
+                                </div>
+                                <div className="relative z-10 space-y-2">
+                                    <h3 className="text-base font-semibold text-white tracking-wide uppercase">
+                                        {v.name}
+                                    </h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed font-light">
+                                        {v.description}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Footer */}
                 <footer className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 opacity-40 hover:opacity-100 transition-opacity">
                     <div className="font-mono text-xs tracking-widest uppercase">
-                        (C) 2026 SOVEREIGN-CORE // ZERO-TRUST PROTOCOL ACTIVE
+                        Kevin R. Howland | Senior ETL Developer | AI Systems Architect
                     </div>
                     <div className="flex gap-8 font-mono text-xs tracking-widest uppercase">
-                        <span>Status: Operational</span>
-                        <span className="text-cyan-400">Identity Verified</span>
+                        <span>US Navy Reserves | IT2</span>
+                        <span className="text-cyan-400">Available for Federal Engagements</span>
                     </div>
                 </footer>
             </main>
