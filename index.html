@@ -3,11 +3,11 @@
  ============================================================================
   MODULE      : SOVEREIGN-CORE / index.html
   VERSION     : 2.1.0
-  STATUS      : [η] PRODUCTION — Final Sovereign Actuation
+  STATUS      : [η] PRODUCTION - Final Sovereign Actuation
   AUTHOR      : Kevin Howland <k.howland@sovereign-core.io>
   CREATED     : 2026-03-06
   MODIFIED    : 2026-03-06
-  LICENSE     : PROPRIETARY — All Rights Reserved
+  LICENSE     : PROPRIETARY - All Rights Reserved
   REPO        : https://github.com/khowland/sovereign-core-showcase
   LIVE URL    : https://khowland.github.io/sovereign-core-showcase/
   ----------------------------------------------------------------------------
@@ -20,13 +20,13 @@
                 [Ac] Actuator     |  [η]  Resonance
   ----------------------------------------------------------------------------
   COMPLIANCE  : NIST SP 800-53 (AU-2, AU-9, AU-12)
-                DoD 8570.01-M — IA Workforce Management
-                NIST SP 800-207 — Zero-Trust Architecture
+                DoD 8570.01-M - IA Workforce Management
+                NIST SP 800-207 - Zero-Trust Architecture
   ----------------------------------------------------------------------------
   CHANGE LOG
   ----------
   v2.1.0  2026-03-06  K. HOWLAND  High-contrast animated arch vector badges
-  v2.0.0  2026-03-06  K. HOWLAND  Final Sovereign Actuation — full dashboard
+  v2.0.0  2026-03-06  K. HOWLAND  Final Sovereign Actuation - full dashboard
   v1.0.0  2026-03-06  K. HOWLAND  Initial Five-Vector schema scaffold
  ============================================================================
 -->
@@ -441,7 +441,7 @@
     const timeline = [
       {
         years: '2004–2010', role: 'Strategic Systems Architecture Lead', org: 'DoD Contractor (Classified)', vector: 'St', color: '#60a5fa',
-        detail: 'Architected high-consequence ETL pipelines for secure logistics and intelligence data. Implemented zero-trust data ingestion for DoD BDE/MIP (Battle Division Element / Mission Intelligence Processing) pipelines — ensuring deterministic integrity across distributed, air-gapped node environments. Processed billions of records under strict AU-12 audit requirements (NIST SP 800-53).'
+        detail: 'Architected high-consequence ETL pipelines for secure logistics and intelligence data. Implemented zero-trust data ingestion for DoD BDE/MIP (Battle Division Element / Mission Intelligence Processing) pipelines - ensuring deterministic integrity across distributed, air-gapped node environments. Processed billions of records under strict AU-12 audit requirements (NIST SP 800-53).'
       },
       {
         years: '2010–2015', role: 'Distributed Infrastructure Engineer', org: 'State Infrastructure Systems', vector: 'Lo', color: '#22d3ee',
@@ -449,7 +449,7 @@
       },
       {
         years: '2015–2019', role: 'Principal Data Architect', org: 'Industrial Automation & Advanced R&D', vector: 'T', color: '#c084fc',
-        detail: 'Led idempotent ETL framework design for heavy fabrication telemetry and industrial IoT data streams. Built transformer pipeline architectures capable of ingesting real-time sensor feeds and mapping them to actionable inference models — bridging operational technology (OT) and information technology (IT) domains.'
+        detail: 'Led idempotent ETL framework design for heavy fabrication telemetry and industrial IoT data streams. Built transformer pipeline architectures capable of ingesting real-time sensor feeds and mapping them to actionable inference models - bridging operational technology (OT) and information technology (IT) domains.'
       },
       {
         years: '2019–2022', role: 'Zero-Trust Systems Architect', org: 'Distributed Intelligence Advisory', vector: 'Ac', color: '#fb923c',
@@ -457,7 +457,7 @@
       },
       {
         years: '2022–Present', role: 'Principal Automation Architect', org: 'Dagwood Sovereign Mesh', vector: 'η', color: '#4ade80',
-        detail: 'Leading agentic inference research and sovereign mesh networking for nationwide AI deployment. Architecting the Dagwood Sovereign Mesh — a zero-trust intelligence fabric with real-time resonance monitoring and alignment drift detection. BDE/MIP ETL expertise applied to sovereign AI orchestration across distributed, multi-node environments.'
+        detail: 'Leading agentic inference research and sovereign mesh networking for nationwide AI deployment. Architecting the Dagwood Sovereign Mesh - a zero-trust intelligence fabric with real-time resonance monitoring and alignment drift detection. BDE/MIP ETL expertise applied to sovereign AI orchestration across distributed, multi-node environments.'
       },
     ];
 
@@ -466,7 +466,7 @@
         v: 'St', name: 'State Space', glow: 'rgba(96,165,250,0.15)', ring: 'rgba(96,165,250,0.25)',
         detail: 'Multidimensional representation of all persistent and ephemeral data. State is treated as a first-class citizen across distributed nodes.',
         expanded: `
-          <p><strong>[St] — State Space</strong> is the sovereign memory of the system. Every record, relation, and runtime snapshot lives here. It defines what <em>is</em> — not just at this moment, but across the full history of operations.</p>
+          <p><strong>[St] - State Space</strong> is the sovereign memory of the system. Every record, relation, and runtime snapshot lives here. It defines what <em>is</em> - not just at this moment, but across the full history of operations.</p>
           <ul>
             <li><strong>BDE/MIP Application:</strong> Tactical state (unit positions, asset statuses, sensor feeds) must be queryable deterministically at any point in time. Immutable append-only logs back every read.</li>
             <li><strong>Design Principle:</strong> All mutations are event-sourced. Rollback to any prior state is a first-class operation, not an emergency procedure.</li>
@@ -475,12 +475,12 @@
       },
       {
         v: 'Lo', name: 'Invariant Control', glow: 'rgba(34,211,238,0.15)', ring: 'rgba(34,211,238,0.25)',
-        detail: 'The logic layer governing all state transitions. No operation may violate fundamental constraints. Invariants are absolute — enforced at the policy layer with zero exceptions.',
+        detail: 'The logic layer governing all state transitions. No operation may violate fundamental constraints. Invariants are absolute - enforced at the policy layer with zero exceptions.',
         expanded: `
-          <p><strong>[Lo] — Invariant Control</strong> is the law of the system. It defines what can and cannot happen — full stop. No bypass, no override without explicit re-attestation.</p>
+          <p><strong>[Lo] - Invariant Control</strong> is the law of the system. It defines what can and cannot happen - full stop. No bypass, no override without explicit re-attestation.</p>
           <ul>
             <li><strong>Zero-Trust DNA:</strong> Every state transition is validated against a policy invariant before it commits. Violations are rejected and emitted as [Ac] alerts immediately.</li>
-            <li><strong>DoD Context:</strong> In BDE/MIP environments, data integrity isn't a preference — it's a mission-critical constraint. [Lo] guarantees that no rogue write, malformed record, or compromised node can corrupt the operational picture.</li>
+            <li><strong>DoD Context:</strong> In BDE/MIP environments, data integrity isn't a preference - it's a mission-critical constraint. [Lo] guarantees that no rogue write, malformed record, or compromised node can corrupt the operational picture.</li>
             <li><strong>Implementation:</strong> Policy-as-code using declarative constraint graphs evaluated at the transaction boundary. Immutable audit records on every decision.</li>
           </ul>`
       },
@@ -488,21 +488,21 @@
         v: 'T', name: 'Transformer', glow: 'rgba(192,132,252,0.15)', ring: 'rgba(192,132,252,0.25)',
         detail: 'Engine for data metamorphosis and agentic inference. All ETL transformations remain idempotent and fully auditable.',
         expanded: `
-          <p><strong>[T] — Transformer</strong> is the intelligence engine. Raw data comes in; actionable, validated, structured intelligence goes out. Every transformation is idempotent — run it once or a thousand times, the result is identical.</p>
+          <p><strong>[T] - Transformer</strong> is the intelligence engine. Raw data comes in; actionable, validated, structured intelligence goes out. Every transformation is idempotent - run it once or a thousand times, the result is identical.</p>
           <ul>
             <li><strong>ETL Pedigree:</strong> 20+ years of designing transformation pipelines for DoD logistics, BDE/MIP intelligence feeds, industrial IoT telemetry, and public safety data. Every pattern is battle-tested at scale.</li>
-            <li><strong>Agentic Capability:</strong> [T] now drives the inference layer — LLM chains, vector embeddings, and semantic routing are all transformation operations under this vector.</li>
+            <li><strong>Agentic Capability:</strong> [T] now drives the inference layer - LLM chains, vector embeddings, and semantic routing are all transformation operations under this vector.</li>
             <li><strong>Guarantee:</strong> Each transform carries a provenance record: source hash, transformation coefficient, timestamp, and authorization tier. Non-negotiable for AU-12 compliance.</li>
           </ul>`
       },
       {
         v: 'Ac', name: 'Actuator', glow: 'rgba(251,146,60,0.15)', ring: 'rgba(251,146,60,0.25)',
-        detail: 'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions — cryptographically verified.',
+        detail: 'Zero-trust orchestration layer. Defines who can perform what actions under what telemetry conditions - cryptographically verified.',
         expanded: `
-          <p><strong>[Ac] — Actuator</strong> is the gatekeeper. No action executes without passing through [Ac]. It owns the authorization boundary, the execution telemetry, and the kill-switch.</p>
+          <p><strong>[Ac] - Actuator</strong> is the gatekeeper. No action executes without passing through [Ac]. It owns the authorization boundary, the execution telemetry, and the kill-switch.</p>
           <ul>
-            <li><strong>Zero-Trust Model:</strong> Every request is authenticated, authorized, and logged — even internal service-to-service calls. There is no implicit trust anywhere in the mesh.</li>
-            <li><strong>DoD 8570 Alignment:</strong> Role-based access is mapped directly to IA workforce tiers. L1–L5 authorization levels are enforced at the action layer, not the application layer.</li>
+            <li><strong>Zero-Trust Model:</strong> Every request is authenticated, authorized, and logged - even internal service-to-service calls. There is no implicit trust anywhere in the mesh.</li>
+            <li><strong>DoD 8570 Alignment:</strong> Role-based access is mapped directly to IA workforce tiers. L1-L5 authorization levels are enforced at the action layer, not the application layer.</li>
             <li><strong>FedRAMP Ready:</strong> All actuation events are emitted as structured telemetry to the [η] Resonance layer. Compliance reporting is a byproduct of normal operation, not an afterthought.</li>
           </ul>`
       },
@@ -510,11 +510,11 @@
         v: 'η', name: 'Resonance', glow: 'rgba(74,222,128,0.15)', ring: 'rgba(74,222,128,0.25)',
         detail: 'High-fidelity telemetry and alignment monitoring. Real-time drift detection and cross-vector synchronization assurance.',
         expanded: `
-          <p><strong>[η] — Resonance</strong> is the nervous system. It watches everything, measures everything, and surfaces deviations before they become failures. The system is only as trustworthy as its observability.</p>
+          <p><strong>[η] - Resonance</strong> is the nervous system. It watches everything, measures everything, and surfaces deviations before they become failures. The system is only as trustworthy as its observability.</p>
           <ul>
-            <li><strong>Drift Detection:</strong> Continuous cross-vector alignment scoring. When [St], [Lo], [T], or [Ac] begin to desynchronize — even subtly — [η] fires an alert before any downstream impact.</li>
-            <li><strong>Telemetry Design:</strong> Every event carries a resonance coefficient. Nominal is 98–100%. Below 95% triggers automated escalation. Below 90% triggers mesh partition and isolation.</li>
-            <li><strong>Nationwide Scale:</strong> Designed to monitor millions of events per second across distributed sovereign mesh nodes — from edge IoT sensors to DoD data centers.</li>
+            <li><strong>Drift Detection:</strong> Continuous cross-vector alignment scoring. When [St], [Lo], [T], or [Ac] begin to desynchronize - even subtly - [η] fires an alert before any downstream impact.</li>
+            <li><strong>Telemetry Design:</strong> Every event carries a resonance coefficient. Nominal is 98-100%. Below 95% triggers automated escalation. Below 90% triggers mesh partition and isolation.</li>
+            <li><strong>Nationwide Scale:</strong> Designed to monitor millions of events per second across distributed sovereign mesh nodes - from edge IoT sensors to DoD data centers.</li>
           </ul>`
       },
     ];
@@ -575,7 +575,7 @@
     const badgeColors = { St: 'rgba(59,130,246,0.85)', Lo: 'rgba(6,182,212,0.85)', T: 'rgba(147,51,234,0.80)', Ac: 'rgba(234,88,12,0.85)', η: 'rgba(16,185,129,0.85)' };
     const archDelays = { St: '0s', Lo: '0.4s', T: '0.8s', Ac: '1.2s', η: '1.6s' };
 
-    // [Lo] Toggle — only one panel open at a time
+    // [Lo] Toggle - only one panel open at a time
     function toggleArchDetail(v) {
       archLayers.forEach(l => {
         const detail = document.getElementById('arch-detail-' + l.v);
