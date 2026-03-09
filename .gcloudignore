@@ -1,0 +1,28 @@
+# .gcloudignore
+# Standard patterns for preventing secret leakage and bloat
+
+.gcloudignore
+.git
+.gitignore
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist/
+build/
+out/
+
+# Environment secrets
+.env
+.env.local
+.env.production
+*.key
+*.pem
+
+# IDEs
+.vscode/
+.idea/
+*.swp
