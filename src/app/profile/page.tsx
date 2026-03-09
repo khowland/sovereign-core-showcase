@@ -4,16 +4,17 @@
  * @file profile/page.tsx
  * @module sovereign-core-showcase
  * @description Professional profile page for Kevin R. Howland.
- * Presents employment history, technical stack, and the Five Vector Schema
- * as a governance framework -- targeting technical hiring managers and
- * federal/defense architects.
+ * Presents employment history, clearance credentials, technical stack,
+ * and the Five Vector Schema as an enterprise AI governance framework.
+ * Targets technical hiring managers and federal/defense architects
+ * at the $150K-$200K engagement tier.
  * @author K. Howland
- * @version 2.0.0
+ * @version 2.1.0
  */
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Database, Shield, Cpu, Zap, Activity, Briefcase, Code2 } from 'lucide-react';
+import { Database, Shield, Cpu, Zap, Activity, Briefcase, Code2, Mail, Phone, MapPin } from 'lucide-react';
 
 /** A single employment record displayed in the experience timeline. */
 interface ExperienceEntry {
@@ -36,42 +37,42 @@ const EXPERIENCE: ExperienceEntry[] = [
         company: 'DDC-Dine | DoD/DHA - NIWC',
         role: 'Senior ETL Developer',
         period: 'Dec 2022 - Present',
-        tags: ['Federal', 'Zero-Trust', 'HL7', 'BDE'],
+        tags: ['Federal', 'Zero-Trust', 'HL7', 'BDE', 'Secret Clearance'],
         bullets: [
-            'Architecting secure Bulk Data Exchange (BDE) frameworks for mission-critical Defense Health Agency data synchronization.',
+            'Architecting secure Bulk Data Exchange (BDE) frameworks for mission-critical Defense Health Agency data synchronization across NIWC systems.',
             'Managing multi-terabyte Amazon Redshift clusters with schema optimization and high-availability configuration for federal data persistence.',
-            'Building custom Python, Java, and Talend parsers for HL7 OBX (Observation) data streams.',
-            'Enforcing PHI/PII integrity through strict validation gates within a zero-trust federal environment.',
+            'Building custom Python, Java, and Talend parsers for HL7 OBX clinical observation data streams.',
+            'Enforcing PHI/PII integrity through zero-trust validation gates within a strictly governed federal environment.',
         ],
     },
     {
         company: 'Xsolis.com',
         role: 'Senior Data Engineer',
         period: 'Prior',
-        tags: ['Healthcare AI', 'SQL Server', 'Predictive Analytics'],
+        tags: ['Healthcare AI', 'SQL Server', 'Predictive Analytics', 'CORTEX'],
         bullets: [
             'Engineered feature enhancements for the CORTEX AI platform across 21 production SQL Servers.',
-            'Integrated predictive analytics into real-time patient diagnostic data pipelines.',
+            'Integrated predictive analytics pipelines into real-time patient diagnostic data workflows.',
         ],
     },
     {
         company: 'Cigna',
         role: 'Senior Database Developer',
         period: 'Prior',
-        tags: ['SSIS', 'T-SQL', 'Performance'],
+        tags: ['SSIS', 'T-SQL', 'Performance Engineering'],
         bullets: [
             'Refactored 20+ legacy SSIS packages into optimized T-SQL stored procedures.',
-            'Achieved a 50% improvement in pipeline throughput and processing efficiency.',
+            'Delivered a 50% improvement in pipeline throughput — reducing batch processing windows and operational cost.',
         ],
     },
     {
         company: 'CB Richard Ellis',
         role: 'IT Business Systems Manager',
         period: 'Prior',
-        tags: ['PeopleSoft', 'CRM', 'Team Lead'],
+        tags: ['Team Lead', 'PeopleSoft', 'Enterprise CRM', 'National Rollout'],
         bullets: [
-            'Led a team of 4 engineers through the national rollout of PeopleSoft CRM.',
-            'Managed the RealHound database ecosystem across enterprise business units.',
+            'Led a team of 4 engineers through a national enterprise rollout of PeopleSoft CRM.',
+            'Managed the RealHound database ecosystem across distributed business units at national scale.',
         ],
     },
 ];
@@ -84,15 +85,15 @@ const STACK: StackCategory[] = [
     },
     {
         label: 'AI & Agentic Engineering',
-        items: ['Agent Orchestration', 'Five Vector Schema', 'Token Optimization', 'Zero-Trust Prompting', 'Loop Mitigation'],
+        items: ['Agent Orchestration', 'Five Vector Schema', 'Token Optimization', 'Zero-Trust Prompting', 'Loop Mitigation', 'Agentic Pipeline Design'],
     },
     {
-        label: 'Development',
+        label: 'Development & Integration',
         items: ['Python', 'Java', 'Talend Studio', 'Bash/Shell', 'REST API', 'Workstreams.ai'],
     },
 ];
 
-/** Icon mapping for the Five Vector governance cards. */
+/** Icon and description mapping for the Five Vector governance cards. */
 const VECTORS = [
     {
         id: 'St',
@@ -119,7 +120,7 @@ const VECTORS = [
         color: 'from-purple-500/10 to-transparent',
         accent: 'text-purple-400',
         description:
-            'Idempotent ETL transforms using Python, Java, and Talend for HL7 data streams. Every transformation is auditable and reproducible.',
+            'Idempotent ETL transforms using Python, Java, and Talend for HL7 data streams. Every transformation is auditable, reproducible, and side-effect free.',
     },
     {
         id: 'Ac',
@@ -128,7 +129,7 @@ const VECTORS = [
         color: 'from-orange-500/10 to-transparent',
         accent: 'text-orange-400',
         description:
-            'BDE ingestion frameworks and secure REST API layers for mission-critical data synchronization. Gated I/O with cryptographically verified access.',
+            'BDE ingestion frameworks and secure REST API layers for mission-critical federal data synchronization. Gated I/O with verified access at every boundary.',
     },
     {
         id: 'η',
@@ -156,7 +157,7 @@ const ProfilePage: React.FC = () => {
             <main className="relative z-10 max-w-6xl mx-auto space-y-16">
 
                 {/* Header */}
-                <header className="space-y-4">
+                <header className="space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -164,7 +165,7 @@ const ProfilePage: React.FC = () => {
                     >
                         <div className="h-px w-12 bg-cyan-500/50" />
                         <span className="text-cyan-400 font-mono tracking-widest text-xs uppercase">
-                            US Navy Reserves | IT2 | Available for Federal Engagements
+                            Active Secret Clearance | DoD CAC | US Navy Reserves IT2
                         </span>
                     </motion.div>
 
@@ -184,10 +185,46 @@ const ProfilePage: React.FC = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-xl text-slate-400 font-light max-w-3xl leading-relaxed"
+                        className="text-xl text-slate-400 font-light max-w-3xl"
                     >
                         Senior Database &amp; ETL Developer | AI Systems Architect
                     </motion.p>
+
+                    {/* Contact row */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex flex-wrap gap-6 pt-2"
+                    >
+                        <a
+                            href="mailto:it2howland@gmail.com"
+                            className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors font-mono"
+                        >
+                            <Mail className="w-4 h-4" />
+                            it2howland@gmail.com
+                        </a>
+                        <a
+                            href="tel:6158015935"
+                            className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors font-mono"
+                        >
+                            <Phone className="w-4 h-4" />
+                            615-801-5935
+                        </a>
+                        <span className="flex items-center gap-2 text-sm text-slate-400 font-mono">
+                            <MapPin className="w-4 h-4" />
+                            Milwaukee, WI | Remote Available
+                        </span>
+                        <a
+                            href="https://khowland.github.io/cdif-ingress/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors font-mono"
+                        >
+                            <Zap className="w-4 h-4" />
+                            Live Demo: CDIF Pipeline
+                        </a>
+                    </motion.div>
                 </header>
 
                 {/* Experience Timeline */}
@@ -196,7 +233,6 @@ const ProfilePage: React.FC = () => {
                         <Briefcase className="w-5 h-5 text-cyan-400" />
                         <h2 className="text-sm font-mono uppercase tracking-widest text-cyan-400">Experience</h2>
                     </div>
-
                     <div className="space-y-6">
                         {EXPERIENCE.map((job, idx) => (
                             <motion.div
@@ -215,7 +251,6 @@ const ProfilePage: React.FC = () => {
                                         {job.period}
                                     </span>
                                 </div>
-
                                 <ul className="space-y-2 mb-4">
                                     {job.bullets.map((b) => (
                                         <li key={b} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
@@ -224,7 +259,6 @@ const ProfilePage: React.FC = () => {
                                         </li>
                                     ))}
                                 </ul>
-
                                 <div className="flex flex-wrap gap-2">
                                     {job.tags.map((tag) => (
                                         <span
@@ -246,7 +280,6 @@ const ProfilePage: React.FC = () => {
                         <Code2 className="w-5 h-5 text-cyan-400" />
                         <h2 className="text-sm font-mono uppercase tracking-widest text-cyan-400">Technical Stack</h2>
                     </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {STACK.map((cat, idx) => (
                             <motion.div
@@ -284,9 +317,8 @@ const ProfilePage: React.FC = () => {
                     </div>
                     <p className="text-slate-400 text-sm max-w-2xl">
                         A structured schema for separating policy from execution in enterprise AI pipelines.
-                        Applied across all data engineering and agentic orchestration work.
+                        Applied across federal data engineering and agentic orchestration work.
                     </p>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {VECTORS.map((v, idx) => (
                             <motion.div
@@ -325,8 +357,8 @@ const ProfilePage: React.FC = () => {
                         Kevin R. Howland | Senior ETL Developer | AI Systems Architect
                     </div>
                     <div className="flex gap-8 font-mono text-xs tracking-widest uppercase">
-                        <span>US Navy Reserves | IT2</span>
-                        <span className="text-cyan-400">Available for Federal Engagements</span>
+                        <span>Active Secret Clearance | DoD CAC</span>
+                        <span className="text-cyan-400">Milwaukee, WI | Remote Available</span>
                     </div>
                 </footer>
             </main>

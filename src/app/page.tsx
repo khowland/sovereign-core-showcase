@@ -64,7 +64,7 @@ const HomeShell: React.FC = () => {
                                 className="inline-flex items-center gap-3 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-mono uppercase tracking-widest"
                             >
                                 <ShieldCheck className="w-4 h-4" />
-                                US Navy Reserves | IT2 | Available for Federal Engagements
+                                Active Secret Clearance | DoD CAC | US Navy Reserves IT2
                             </motion.div>
 
                             {/* Name */}
@@ -91,8 +91,8 @@ const HomeShell: React.FC = () => {
                                 </p>
                                 <p className="text-base text-slate-400 max-w-xl leading-relaxed">
                                     Bridging enterprise data warehousing with autonomous AI engineering.
-                                    Currently supporting DoD/DHA federal health data pipelines
-                                    at NIWC under the DDC-Dine contract.
+                                    Currently supporting DoD/DHA federal health data pipelines at NIWC
+                                    under the DDC-Dine contract. Active Secret Clearance holder.
                                 </p>
                             </motion.div>
 
@@ -115,6 +115,12 @@ const HomeShell: React.FC = () => {
                                 >
                                     Architecture
                                 </button>
+                                <a
+                                    href="mailto:it2howland@gmail.com"
+                                    className="px-8 py-4 bg-cyan-600/20 border border-cyan-500/30 hover:bg-cyan-600/30 text-cyan-300 rounded-xl font-medium transition-all backdrop-blur-sm"
+                                >
+                                    Get In Touch
+                                </a>
                             </motion.div>
                         </div>
 
@@ -188,7 +194,7 @@ const HomeShell: React.FC = () => {
                 </div>
                 <div className="flex gap-4 items-center">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>US Navy Reserves | IT2</span>
+                    <span>Active Secret Clearance | DoD CAC</span>
                 </div>
             </footer>
         </div>
